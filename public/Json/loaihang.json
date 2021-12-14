@@ -1,0 +1,33 @@
+{"loaihangs":[
+    {
+      "maloai": 1,
+      "tenloai": "Bất động sản",
+      "hinh": "https://media-cdn.laodong.vn/Storage/NewsPortal/2020/10/18/846390/Dau-Tu-Bat-Dong-San.jpg"
+    },
+    {
+      "maloai": 2,
+      "tenloai": "Xe cộ",
+      "hinh": "https://media-cdn.laodong.vn/Storage/NewsPortal/2020/10/18/846390/Dau-Tu-Bat-Dong-San.jpg"
+    },
+    {
+      "maloai": 3,
+      "tenloai": "Đồ điện tử",
+      "hinh": "https://media-cdn.laodong.vn/Storage/NewsPortal/2020/10/18/846390/Dau-Tu-Bat-Dong-San.jpg"
+    },
+    {
+      "maloai": 4,
+      "tenloai": "Việc làm",
+      "hinh": "https://media-cdn.laodong.vn/Storage/NewsPortal/2020/10/18/846390/Dau-Tu-Bat-Dong-San.jpg"
+    },
+    {
+      "maloai": 5,
+      "tenloai": "Thú Cưng",
+      "hinh": "https://media-cdn.laodong.vn/Storage/NewsPortal/2020/10/18/846390/Dau-Tu-Bat-Dong-San.jpg"
+    },
+    {
+      "maloai": 6,
+      "tenloai": "Thời Trang, Đồ dùng cá nhân",
+      "hinh": "https://media-cdn.laodong.vn/Storage/NewsPortal/2020/10/18/846390/Dau-Tu-Bat-Dong-San.jpg"
+    }
+  ]
+  }
