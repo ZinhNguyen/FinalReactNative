@@ -13,15 +13,44 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import IconAg from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconAg from 'react-native-vector-icons/Ionicons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import SlideShow from './components/SlideShow'
 import Flatlist_Ho from './components/Flatlist_horizontal'
 import Flatlist_ve from './components/Flatlist_vertical'
+import Mh_LoaiHoa from './views/mh_loaihoa'
+import Mh_Hoa from './views/mh_hoa'
+import Mh_Master from './views/home'
 
 
 const Tab= createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+const HomeNav=createStackNavigator();
+
+const Masterdetail=()=>(
+  <HomeNav.Navigator
+    initialRouteName='Master'
+    options={{headerTitleAlign:'center'}}
+  >
+    <HomeNav.Screen
+      name='Master'
+      component={Mh_Master}
+      options={{
+        headerShown: false,
+        title:'Danh Sách Loài Hoa',
+        headerTitleAlign: 'center'
+      }}
+    />
+    <HomeNav.Screen
+      name='Detail'
+      component={Mh_Hoa}
+      options={({route}) => ({
+        title: route.params.tenloai,
+        headerTitleAlign:'center',
+      })}
+    />
+  </HomeNav.Navigator>
+)
 
 class TabControl extends Component {
    render() {
@@ -36,7 +65,7 @@ class TabControl extends Component {
             }}
           >
             <Tab.Screen name= "Master Detail" 
-              component={Flatlist_ve}
+              component={Masterdetail}
               options={{
                 tabBarHideOnKeyboard: 'true',
                 headerShown: false,
@@ -47,21 +76,21 @@ class TabControl extends Component {
                 )
               }}
             />
-            <Tab.Screen name= "Cart" 
+            <Tab.Screen name= "Chat" 
               component={Flatlist_Ho}
               options={{
-                tabBarLabel: 'Cart',
+                tabBarLabel: 'chat',
                 tabBarIcon: ({ color, size}) => (
-                  <IconAg name="cart-outline" color={color} size={30} />
+                  <IconAg name="chatbox-outline" color={color} size={30} />
                 )
               }}
             /> 
-            <Tab.Screen name= "Message" 
+            <Tab.Screen name= "Notification" 
               component={Flatlist_ve}
               options={{
-                tabBarLabel: 'Chat',
+                tabBarLabel: 'notify',
                 tabBarIcon: ({ color, size}) => (
-                  <IconAg name="chat-outline" color={color} size={30} />
+                  <IconAg name="notifications-outline" color={color} size={30} />
                 )
               }}
             /> 
@@ -79,7 +108,7 @@ class TabControl extends Component {
               options={{
                 tabBarLabel: 'User',
                 tabBarIcon: ({ color, size}) => (
-                  <IconAg name="account-circle-outline" color={color} size={30} />
+                  <IconAg name="person-outline" color={color} size={30} />
                 )
               }}
             /> 
@@ -100,12 +129,15 @@ export class App extends Component {
       //       barStyle = "dark-content"
       //       hidden = {false}   
       //     />  
-      //   <SlideShow />
-      //   <Flatlist_Ho/>
-      //   <Flatlist_ve/>
       // </View>
       // </SafeAreaView>
-      <>      
+      <>    
+         {/* <StatusBar   
+           translucent 
+            backgroundColor="transparent"
+           barStyle = "dark-content"
+           hidden = {false}   
+          />     */}
        <NavigationContainer>
          <Drawer.Navigator>
            <Drawer.Screen name = "Home" 

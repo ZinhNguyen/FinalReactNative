@@ -35,7 +35,7 @@ function Loaihang({ma, ten, hinh}) {
   return (
     <View key={ma} style={styles.ContainerImageIcon}>     
       <Image style={styles.ImageIcon} source ={{uri:hinh}}/>   
-      <Text style={styles.tieude}>{ten}</Text>
+      <Text style={styles.iconContent}>{ten}</Text>
     </View>
   );
 }

@@ -5,14 +5,8 @@ import styles from '../components/Styles';
 // import Duongcach from './duongcach';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
-import Slideshow from '../components/SlideShow'
-import Categories from '../components/Category_Horizontal'
-import Newproduct from '../components/Newproduct'
-import Categories_inner from '../components/Flatlist_horizontal'
-import Title from '../components/Title_cate'
-import New_Product from '../components/Flatlist_vertical'
 
-const HomeApps=()=>{
+const Mh_LoaiHoa=()=>{
     const [isloaded, setDataLoaded] = useState(true);
     const [loaihoas, setLoaihoaData] = useState();
 
@@ -38,13 +32,13 @@ const HomeApps=()=>{
             <View>
               {isloaded ? <ActivityIndicator /> :
               <FlatList
-                data={loaihoas}
-                keyExtractor={item=>item.Maloai}
-                renderItem={item=>renderItem(item)}
-            //  ItemSeparatorComponent={Duongcach}
-                pagingEnabled={false}
-                ListHeaderComponent={Header}
-            //    ListFooterComponent={Footer}
+              data={loaihoas}
+              keyExtractor={item=>item.Maloai}
+              renderItem={item=>renderItem(item)}
+            //   ItemSeparatorComponent={Duongcach}
+              pagingEnabled={true}
+            //   ListHeaderComponent={THDautrang}
+              //ListFooterComponent={Cuoitrang}
             />}
             </View>
 
@@ -78,27 +72,16 @@ function Loaihoa({ma, ten}) {
 
 
 
-function Header() {
-  return (
-    //<Dautrang image={require('./assets/daLat.jpg')}/>
-    <>
-        <Slideshow/>
-        <Title content ="Khám phá danh mục"/>
-        <Categories_inner/>
-        <Title content ="Tin mới đăng"/> 
-        <Newproduct/>   
-        {/* <New_Product/>        */}
-    </>
-  );
-}
-
-// function Footer() {
+// function THDautrang() {
 //   return (
-//       <>
+//     <Dautrang image={require('./assets/daLat.jpg')}/>
+//   );
+// }
 
-//       </>
-
+// function Cuoitrang() {
+//   return (
+//     <Dautrang image={require('./assets/vungTau.jpg')}/>
 //   );
 // }
 }
-export default HomeApps;
+export default Mh_LoaiHoa;

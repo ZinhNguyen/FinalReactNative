@@ -13,6 +13,7 @@ export class Flatlist_vertical extends Component {
     return (
         <>
       <FlatList
+        contentContainerStyle={{ paddingBottom: 100 }}
         data={hoas}
         keyExtractor={item => item.mahoa}
         renderItem={renderItem}
@@ -21,7 +22,6 @@ export class Flatlist_vertical extends Component {
         //ListHeaderComponent={Dautrang}
        // ListFooterComponent={Cuoitrang}
         numColumns = '2'
-        horizontal = {false}
         bounces
       />
       </>
@@ -41,7 +41,7 @@ function Loaihoa({ma, ten, mota}) {
   return (
     <View key={ma} style={styles.containerProduct}>
         <Image style={styles.ImageProduct} source ={require('../public/images/menu_dichvu.png')}/>
-        <Text style={styles.tieude}>{ten}</Text>
+        <Text style={styles.iconContent}>{ten}</Text>
       {/* <Text style={styles.noidung}>{mota}</Text> */}
     </View>
   );

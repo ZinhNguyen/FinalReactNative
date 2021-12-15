@@ -121,30 +121,45 @@ const final_style = StyleSheet.create({
   ImageIcon:{
     height: 80,
     width: 80,
-    borderRadius: 15,
+    borderRadius: 20,
   },
   ImageProduct:{
     height: 180,
-    width: 182,
+    width: 176,
   },
 
   ContainerImageIcon:{
-    paddingTop: 0,
-    paddingLeft: 10,
-    padding: 40,
+    padding: 20,
+    paddingTop: 10,
     borderBottomWidth: 8,
     borderBottomColor: 'lightgray',
-    
+    alignItems: "center",
   },
   containerProduct:{
     padding: 10, 
     borderColor: 'lightgray', 
     borderWidth:1,
+    alignItems: "center"
   },
   price:{
     color: 'red',
     fontWeight: 'bold'
+  },
+  iconContent:{
+    marginTop: 5,
+    fontSize: 15,
+    fontWeight: '500',
+    color: 'black'
+  },
+  Title_Content:{
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: 'black',
+    marginTop: 5,
+    marginLeft: 5,
+    marginBottom: 10,
   }
+
 });
 
 

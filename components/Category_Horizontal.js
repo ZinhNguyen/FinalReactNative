@@ -6,13 +6,8 @@ import styles from '../components/Styles';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
 import Slideshow from '../components/SlideShow'
-import Categories from '../components/Category_Horizontal'
-import Newproduct from '../components/Newproduct'
-import Categories_inner from '../components/Flatlist_horizontal'
-import Title from '../components/Title_cate'
-import New_Product from '../components/Flatlist_vertical'
 
-const HomeApps=()=>{
+const Category_Horizontal=()=>{
     const [isloaded, setDataLoaded] = useState(true);
     const [loaihoas, setLoaihoaData] = useState();
 
@@ -38,13 +33,16 @@ const HomeApps=()=>{
             <View>
               {isloaded ? <ActivityIndicator /> :
               <FlatList
-                data={loaihoas}
-                keyExtractor={item=>item.Maloai}
-                renderItem={item=>renderItem(item)}
-            //  ItemSeparatorComponent={Duongcach}
-                pagingEnabled={false}
-                ListHeaderComponent={Header}
-            //    ListFooterComponent={Footer}
+              data={loaihoas}
+              keyExtractor={item=>item.Maloai}
+              renderItem={item=>renderItem(item)}
+            //   ItemSeparatorComponent={Duongcach}
+              pagingEnabled={true}
+            //  ListHeaderComponent={Header}
+            //  ListFooterComponent={Cuoitrang}
+                numColumns = '1'
+                horizontal = {true}
+                showsHorizontalScrollIndicator={false}
             />}
             </View>
 
@@ -78,27 +76,20 @@ function Loaihoa({ma, ten}) {
 
 
 
-function Header() {
-  return (
-    //<Dautrang image={require('./assets/daLat.jpg')}/>
-    <>
-        <Slideshow/>
-        <Title content ="Khám phá danh mục"/>
-        <Categories_inner/>
-        <Title content ="Tin mới đăng"/> 
-        <Newproduct/>   
-        {/* <New_Product/>        */}
-    </>
-  );
-}
-
-// function Footer() {
+// function Header() {
 //   return (
-//       <>
+//     //<Dautrang image={require('./assets/daLat.jpg')}/>
+//     <>
+//         <Slideshow/>
+//         <Categories/>
+//     </>
+//   );
+// }
 
-//       </>
-
+// function Cuoitrang() {
+//   return (
+//     <Dautrang image={require('./assets/vungTau.jpg')}/>
 //   );
 // }
 }
-export default HomeApps;
+export default Category_Horizontal;
