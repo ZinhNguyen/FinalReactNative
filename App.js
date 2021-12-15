@@ -21,6 +21,7 @@ import Flatlist_ve from './components/Flatlist_vertical'
 import Mh_LoaiHoa from './views/mh_loaihoa'
 import Mh_Hoa from './views/mh_hoa'
 import Mh_Master from './views/home'
+import Mh_detail1 from './views/details'
 
 
 const Tab= createBottomTabNavigator();
@@ -44,6 +45,14 @@ const Masterdetail=()=>(
     <HomeNav.Screen
       name='Detail'
       component={Mh_Hoa}
+      options={({route}) => ({
+        title: route.params.tenloai,
+        headerTitleAlign:'center',
+      })}
+    />
+    <HomeNav.Screen
+      name='Detail1'
+      component={Mh_detail1}
       options={({route}) => ({
         title: route.params.tenloai,
         headerTitleAlign:'center',

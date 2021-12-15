@@ -6,13 +6,14 @@ import styles from '../components/Styles';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
 
-const Newproduct=({route})=>{
+const Details=({route})=>{
 
     const [isloaded, setDataLoaded] = useState(true);
     const [hoas, sethoaData] = useState();
-    //const maloai=route.params.maloai;
-    const maloai = 2;
-    //console.log(maloai)
+    const maloai = route.params.maloai;
+    const mahoa=route.params.mahoa;
+    //const maloai = 2;
+    console.log(mahoa)
     const getloaihoas = async () => {
         try {
             let response = await fetch('http://webapibanhoa.somee.com/api/XulyController/LayHoaTheoLoai?maloai='+maloai);
@@ -28,11 +29,10 @@ const Newproduct=({route})=>{
     useEffect (() => {
       getloaihoas();
     },[]);
-    const navigation = useNavigation();
     //const HoaChon=hoas.filter(x=>x.maloai==maloai);
         return(
             <>          
-            <FlatList
+            {/* <FlatList
             data={hoas}
             keyExtractor={item=>item.mahoa}
             renderItem={item=>renderItem(item)}
@@ -42,7 +42,10 @@ const Newproduct=({route})=>{
             // ListFooterComponent={Cuoitrang}
             numColumns = '2'
             bounces
-            />
+            /> */}
+            <View>
+                <Loaihoa ma={mahoa}/>
+            </View>
             </>
         )
 
@@ -55,7 +58,7 @@ function renderItem({item, index}) {
   return (
     <TouchableOpacity
         onPress ={
-             () => navigation.navigate('Detail1', {mahoa: item.mahoa, maloai: maloai})
+            () => handleSelection(item.mahoa)
         }>
             <View>
                 <Loaihoa ma={item.mahoa} ten={item.tenhoa} mota={item.mota} hinh={item.hinh} />
@@ -93,4 +96,4 @@ function Loaihoa({ma, ten, mota, hinh}) {
 //   );
 // }
 }
-export default Newproduct;
+export default Details;
