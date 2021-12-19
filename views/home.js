@@ -18,7 +18,7 @@ const HomeApps=()=>{
 
     const getLoaihoas = async () => {
       try {
-        let response = await fetch('http://webapibanhoa.somee.com/api/XulyController/LayLoaiHoa');
+        let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/XulyController/LayLoaiHoa');
         let loaihoa = await response.json();
 
         setLoaihoaData(loaihoa);
@@ -84,7 +84,7 @@ function Header() {
     <>
         <Slideshow/>
         <Title content ="Khám phá danh mục"/>
-        <Categories_inner/>
+        <Categories/>
         <Title content ="Tin mới đăng"/> 
         <Newproduct/>   
         {/* <New_Product/>        */}

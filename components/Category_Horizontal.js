@@ -1,5 +1,5 @@
 import React, {Component, useState, useEffect} from 'react';
-import {Text, View, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
+import {Text, View, Image, FlatList, TouchableOpacity, ActivityIndicator} from 'react-native';
 import styles from '../components/Styles';
 //import {loaihoas} from './data/loaihoa.json';
 // import Duongcach from './duongcach';
@@ -60,7 +60,7 @@ function renderItem({item, index}) {
             () => navigation.navigate('Detail', {maloai: item.Maloai})
         }>
             <View>
-                <Loaihoa ma={item.Maloai} ten={item.Tenloai}/>
+                <Loaihang ma={item.Maloai} ten={item.Tenloai} hinh={item.hinh} />
             </View>
         </TouchableOpacity>
   );
@@ -74,6 +74,15 @@ function Loaihoa({ma, ten}) {
   );
 }
 
+function Loaihang({ma, ten, hinh}) {
+  console.log({hinh});
+  return (
+    <View key={ma} style={styles.ContainerImageIcon}>     
+      <Image style={styles.ImageIcon} source ={{uri:hinh}}/>   
+      <Text style={styles.iconContent}>{ten}</Text>
+    </View>
+  );
+}
 
 
 // function Header() {
