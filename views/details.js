@@ -10,15 +10,15 @@ import styles from '../components/Styles'
 const Detail =({route})=>{
     // const username=route.params.username;
     // const phone=route.params.mahoa;
-    const mahoa=route.params.mahoa;
-    const tenhoa=route.params.tenhoa;
+    const mahang=route.params.mahang;
+    const tenhang=route.params.tenhang;
     const dongia=route.params.dongia;
     const mota=route.params.mota;
     const hinh=route.params.hinh;
     return(
         <View style={{flexDirection:'column'}}>           
             <Image style={{alignSelf: 'center' ,resizeMode: 'stretch', width: '100%', height: 200,}} source={{uri:hinh}}/>
-            <Text style={{color: 'black', fontSize: 20, fontWeight: '600', padding: 10 }}>Tenhoa: {tenhoa}</Text>
+            <Text style={{color: 'black', fontSize: 20, fontWeight: '600', padding: 10 }}>Tenhang: {tenhang}</Text>
             <Text style={{color: 'red', fontSize: 20, paddingLeft: 10, paddingBottom: 5 }}>{dongia} đ</Text>
             <Text style={{color: 'gray', fontSize: 15, fontWeight: 'normal', paddingLeft: 10, paddingBottom: 10 }}>15 giờ trước</Text>         
             <Text style={{color: 'black', fontSize: 15, fontWeight: 'normal', paddingLeft: 10 }}>

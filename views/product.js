@@ -6,12 +6,11 @@ import styles from '../components/Styles';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
 
-const Newproduct=({route})=>{
+const product=({route})=>{
 
     const [isloaded, setDataLoaded] = useState(true);
     const [hoas, sethoaData] = useState();
-    //const maloai=route.params.maloai;
-    const maloai = 1;
+    const maloai=route.params.maloai;
     //console.log(maloai)
     const getloaihoas = async () => {
         try {
@@ -20,7 +19,7 @@ const Newproduct=({route})=>{
 
             sethoaData(hoas)
             setDataLoaded(false)
-            console.log('api/LayLoaiHang?maloai='+maloai);
+            console.log('api/XulyController/LayHoaTheoLoai?maloai='+maloai);
         } catch (error) {
           console.error(error);
         }
@@ -59,13 +58,13 @@ function renderItem({item, index}) {
           {mahoa: item.mahang, tenhang: item.tenhang, dongia: item.dongia, mota: item.mota, hinh: item.hinh})
         }>
             <View>
-                <Loaihang ma={item.mahang} ten={item.tenhang} mota={item.mota} hinh={item.hinh} />
+                <Loaihoa ma={item.mahang} ten={item.tenhang} mota={item.mota} hinh={item.hinh} />
             </View>
         </TouchableOpacity>
   );
 }
 
-function Loaihang({ma, ten, mota, hinh}) {
+function Loaihoa({ma, ten, mota, hinh}) {
     
   return (
     <View key={ma} style={styles.containerProduct}>
@@ -94,4 +93,4 @@ function Loaihang({ma, ten, mota, hinh}) {
 //   );
 // }
 }
-export default Newproduct;
+export default product;

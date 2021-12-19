@@ -13,7 +13,7 @@ const Category_Horizontal=()=>{
 
     const getLoaihoas = async () => {
       try {
-        let response = await fetch('http://webapibanhoa.somee.com/api/XulyController/LayLoaiHoa');
+        let response = await fetch('http://192.168.1.8/WebapiQLBanHoa/api/Laydanhmuc');
         let loaihoa = await response.json();
 
         setLoaihoaData(loaihoa);
@@ -37,7 +37,7 @@ const Category_Horizontal=()=>{
               keyExtractor={item=>item.Maloai}
               renderItem={item=>renderItem(item)}
             //   ItemSeparatorComponent={Duongcach}
-              pagingEnabled={true}
+              pagingEnabled={false}
             //  ListHeaderComponent={Header}
             //  ListFooterComponent={Cuoitrang}
                 numColumns = '1'
@@ -57,10 +57,10 @@ function renderItem({item, index}) {
   return (
     <TouchableOpacity
         onPress ={
-            () => navigation.navigate('Detail', {maloai: item.Maloai})
+            () => navigation.navigate('Product', {maloai: item.Maloai})
         }>
             <View>
-                <Loaihang ma={item.Maloai} ten={item.Tenloai} hinh={item.hinh} />
+                <Loaihang ma={item.Maloai} ten={item.Tenloai} hinh={item.Hinh} />
             </View>
         </TouchableOpacity>
   );
@@ -75,7 +75,7 @@ function Loaihoa({ma, ten}) {
 }
 
 function Loaihang({ma, ten, hinh}) {
-  console.log({hinh});
+  //console.log({hinh});
   return (
     <View key={ma} style={styles.ContainerImageIcon}>     
       <Image style={styles.ImageIcon} source ={{uri:hinh}}/>   

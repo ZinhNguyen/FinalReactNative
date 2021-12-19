@@ -10,7 +10,6 @@ import Categories from '../components/Category_Horizontal'
 import Newproduct from '../components/Newproduct'
 import Categories_inner from '../components/Flatlist_horizontal'
 import Title from '../components/Title_cate'
-import New_Product from '../components/Flatlist_vertical'
 
 const HomeApps=()=>{
     const [isloaded, setDataLoaded] = useState(true);
@@ -18,7 +17,7 @@ const HomeApps=()=>{
 
     const getLoaihoas = async () => {
       try {
-        let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/XulyController/LayLoaiHoa');
+        let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/Laydanhmuc');
         let loaihoa = await response.json();
 
         setLoaihoaData(loaihoa);
@@ -87,7 +86,6 @@ function Header() {
         <Categories/>
         <Title content ="Tin mới đăng"/> 
         <Newproduct/>   
-        {/* <New_Product/>        */}
     </>
   );
 }
