@@ -23,49 +23,105 @@ import Mh_Hoa from './views/mh_hoa'
 import Mh_Master from './views/home'
 import Mh_detail1 from './views/details'
 import Mh_Product from './views/product'
+import MasterDetail from './components/Masterdetail'
+import HomeScreen from './views/HomeScreen1';
+import RegisterUser from './views/RegisterUser';
+import UpdateUser from './views/UpdateUser';
+import ViewUser from './views/ViewUser';
+import ViewAllUser from './views/ViewAllUser';
+import DeleteUser from './views/DeleteUser';
 
 
 const Tab= createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const HomeNav=createStackNavigator();
 
-const Masterdetail=()=>(
-  <HomeNav.Navigator
-    initialRouteName='Master'
-    options={{headerTitleAlign:'center'}}
-  >
+
+const AccountFunction=()=>(
+  <HomeNav.Navigator initialRouteName="HomeScreen">
     <HomeNav.Screen
-      name='Master'
-      component={Mh_Master}
+      name="HomeScreen"
+      component={HomeScreen}
       options={{
-        headerShown: false,
-        title:'Danh Sách Loài Hoa',
-        headerTitleAlign: 'center'
+        title: 'Home', //Set Header Title
+        headerStyle: {
+          backgroundColor: '#f4511e', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
       }}
     />
     <HomeNav.Screen
-      name='Detail'
-      component={Mh_Hoa}
-      options={({route}) => ({
-        title: route.params.tenloai,
-        headerTitleAlign:'center',
-      })}
+      name="View"
+      component={ViewUser}
+      options={{
+        title: 'View User', //Set Header Title
+        headerStyle: {
+          backgroundColor: '#f4511e', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}
     />
     <HomeNav.Screen
-      name='Detail1'
-      component={Mh_detail1}
-      options={({route}) => ({
-        title: route.params.tenloai,
-        headerTitleAlign:'center',
-      })}
+      name="ViewAll"
+      component={ViewAllUser}
+      options={{
+        title: 'View Users', //Set Header Title
+        headerStyle: {
+          backgroundColor: '#f4511e', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}
     />
     <HomeNav.Screen
-      name='Product'
-      component={Mh_Product}
-      options={({route}) => ({
-        title: route.params.tenloai,
-        headerTitleAlign:'center',
-      })}
+      name="Update"
+      component={UpdateUser}
+      options={{
+        title: 'Update User', //Set Header Title
+        headerStyle: {
+          backgroundColor: '#f4511e', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}
+    />
+    <HomeNav.Screen
+      name="Register"
+      component={RegisterUser}
+      options={{
+        title: 'Register User', //Set Header Title
+        headerStyle: {
+          backgroundColor: '#f4511e', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}
+    />
+    <HomeNav.Screen
+      name="Delete"
+      component={DeleteUser}
+      options={{
+        title: 'Delete User', //Set Header Title
+        headerStyle: {
+          backgroundColor: '#f4511e', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}
     />
   </HomeNav.Navigator>
 )
@@ -83,7 +139,7 @@ class TabControl extends Component {
             }}
           >
             <Tab.Screen name= "Master Detail" 
-              component={Masterdetail}
+              component={MasterDetail}
               options={{
                 tabBarHideOnKeyboard: 'true',
                 headerShown: false,
@@ -122,7 +178,7 @@ class TabControl extends Component {
               }}
             />
             <Tab.Screen name= "User" 
-              component={Flatlist_ve}
+              component={AccountFunction}
               options={{
                 tabBarLabel: 'User',
                 tabBarIcon: ({ color, size}) => (
