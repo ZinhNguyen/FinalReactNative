@@ -1,6 +1,6 @@
 import {ThemeProvider} from '@react-navigation/native'
 import React from 'react'
-import { Text, View, Image, FlatList } from 'react-native'
+import { Text, View, Image, ScrollView} from 'react-native'
 import {useNavigation} from '@react-navigation/core'
 import { Dimensions } from 'react-native';
 const win = Dimensions.get('window');
@@ -16,9 +16,10 @@ const Detail =({route})=>{
     const mota=route.params.mota;
     const hinh=route.params.hinh;
     return(
+        <ScrollView>
         <View style={{flexDirection:'column'}}>           
-            <Image style={{alignSelf: 'center' ,resizeMode: 'stretch', width: '100%', height: 200,}} source={{uri:hinh}}/>
-            <Text style={{color: 'black', fontSize: 20, fontWeight: '600', padding: 10 }}>Tenhang: {tenhang}</Text>
+            <Image style={{alignSelf: 'center' ,resizeMode: 'stretch', width: '100%', height: 400,}} source={{uri:hinh}}/>
+            <Text style={{color: 'black', fontSize: 20, fontWeight: '600', padding: 10 }}>{tenhang}</Text>
             <Text style={{color: 'red', fontSize: 20, paddingLeft: 10, paddingBottom: 5 }}>{dongia} đ</Text>
             <Text style={{color: 'gray', fontSize: 15, fontWeight: 'normal', paddingLeft: 10, paddingBottom: 10 }}>15 giờ trước</Text>         
             <Text style={{color: 'black', fontSize: 15, fontWeight: 'normal', paddingLeft: 10 }}>
@@ -61,6 +62,7 @@ const Detail =({route})=>{
             <Text style={{borderBottomWidth: 1, borderBottomColor: 'lightgray', width: '95%', alignSelf: "center"}}></Text>
             <Text style={{color: 'black', fontSize: 15, fontWeight: 'normal', padding: 10 }}>{mota}</Text>
         </View>
+        </ScrollView>
     )
 }
 const gioithieu="Toyota Raize vừa ra mắt thị trường Việt, giá từ 527 triệu đồng. Với thiết kế trẻ trung, trang bị tiện nghi hiện đại cùng giá hấp dẫn,… hứa hẹn là lựa chọn đáng giá cho người trẻ."

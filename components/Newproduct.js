@@ -59,13 +59,13 @@ function renderItem({item, index}) {
           {mahoa: item.mahang, tenhang: item.tenhang, dongia: item.dongia, mota: item.mota, hinh: item.hinh})
         }>
             <View>
-                <Loaihang ma={item.mahang} ten={item.tenhang} mota={item.mota} hinh={item.hinh} />
+                <Loaihang ma={item.mahang} ten={item.tenhang} dongia={item.dongia} hinh={item.hinh} />
             </View>
         </TouchableOpacity>
   );
 }
 
-function Loaihang({ma, ten, mota, hinh}) {
+function Loaihang({ma, ten, dongia, hinh}) {
     
   return (
     <View key={ma} style={styles.containerProduct}>
@@ -73,7 +73,7 @@ function Loaihang({ma, ten, mota, hinh}) {
       style={styles.ImageProduct}
       />
       <Text style={styles.tieude}>{ten}</Text>
-      {/* <Text style={styles.noidung}>{mota}</Text> */}
+      <Text style={styles.price}>{dongia}đ</Text>
     </View>
   );
 }

@@ -58,13 +58,13 @@ function renderItem({item, index}) {
           {mahoa: item.mahang, tenhang: item.tenhang, dongia: item.dongia, mota: item.mota, hinh: item.hinh})
         }>
             <View>
-                <Loaihoa ma={item.mahang} ten={item.tenhang} mota={item.mota} hinh={item.hinh} />
+                <Loaihoa ma={item.mahang} ten={item.tenhang} dongia={item.dongia} hinh={item.hinh} />
             </View>
         </TouchableOpacity>
   );
 }
 
-function Loaihoa({ma, ten, mota, hinh}) {
+function Loaihoa({ma, ten, dongia, hinh}) {
     
   return (
     <View key={ma} style={styles.containerProduct}>
@@ -72,7 +72,7 @@ function Loaihoa({ma, ten, mota, hinh}) {
       style={styles.ImageProduct}
       />
       <Text style={styles.tieude}>{ten}</Text>
-      {/* <Text style={styles.noidung}>{mota}</Text> */}
+      <Text style={styles.price}>{dongia}đ</Text>
     </View>
   );
 }

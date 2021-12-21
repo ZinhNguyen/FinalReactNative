@@ -25,10 +25,11 @@ import Mh_detail1 from './views/details'
 import Mh_Product from './views/product'
 import MasterDetail from './components/Masterdetail'
 import HomeScreen from './views/HomeScreen1';
-import RegisterUser from './views/RegisterUser';
+import RegisterUser from './views/RegisterUser1';
 import UpdateUser from './views/UpdateUser';
-import ViewUser from './views/ViewUser';
-import ViewAllUser from './views/ViewAllUser';
+import ViewUser from './views/Login';
+import Login from './views/Login'
+import ViewAllUser from './views/ViewAllUser1';
 import DeleteUser from './views/DeleteUser';
 
 
@@ -43,6 +44,7 @@ const AccountFunction=()=>(
       name="HomeScreen"
       component={HomeScreen}
       options={{
+        headerShown: false,
         title: 'Home', //Set Header Title
         headerStyle: {
           backgroundColor: '#f4511e', //Set Header color
@@ -58,6 +60,22 @@ const AccountFunction=()=>(
       component={ViewUser}
       options={{
         title: 'View User', //Set Header Title
+        headerStyle: {
+          backgroundColor: '#f4511e', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}
+    />
+    <HomeNav.Screen
+      name="Login"
+      component={Login}
+      options={{
+        headerShown: false,
+        tabBarVisible: false,
+        title: 'Login User', //Set Header Title
         headerStyle: {
           backgroundColor: '#f4511e', //Set Header color
         },
@@ -150,15 +168,6 @@ class TabControl extends Component {
                 )
               }}
             />
-            <Tab.Screen name= "Chat" 
-              component={Flatlist_Ho}
-              options={{
-                tabBarLabel: 'chat',
-                tabBarIcon: ({ color, size}) => (
-                  <IconAg name="chatbox-outline" color={color} size={30} />
-                )
-              }}
-            /> 
             <Tab.Screen name= "Notification" 
               component={Flatlist_ve}
               options={{
@@ -168,18 +177,20 @@ class TabControl extends Component {
                 )
               }}
             /> 
-            <Tab.Screen name= "Wishlist" 
+            <Tab.Screen name= "Searching" 
               component={Flatlist_Ho}
               options={{
-                tabBarLabel: 'Wishlist',
+                tabBarLabel: 'Searching',
                 tabBarIcon: ({ color, size}) => (
-                  <IconAg name="heart-outline" color={color} size={30} />
+                  <IconAg name="search-outline" color={color} size={30} />
                 )
               }}
             />
             <Tab.Screen name= "User" 
               component={AccountFunction}
               options={{
+                headerShown: false,
+                title: '',
                 tabBarLabel: 'User',
                 tabBarIcon: ({ color, size}) => (
                   <IconAg name="person-outline" color={color} size={30} />

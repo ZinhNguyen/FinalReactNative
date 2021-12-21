@@ -7,7 +7,7 @@ import { openDatabase } from 'react-native-sqlite-storage';
 import { ScrollView } from 'react-native-gesture-handler';
 import IconAg from 'react-native-vector-icons/Ionicons';
 
-var db = openDatabase({ name: 'UserDatabase.db' });
+var db = openDatabase({ name: 'QLBanHang.db' });
 
 const HomeScreen = ({ navigation }) => {
   useEffect(() => {
@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
           if (res.rows.length == 0) {
             txn.executeSql('DROP TABLE IF EXISTS table_user', []);
             txn.executeSql(
-              'CREATE TABLE IF NOT EXISTS table_user(user_id INTEGER PRIMARY KEY AUTOINCREMENT, user_name VARCHAR(20), user_contact INT(10), user_address VARCHAR(255))',
+              'CREATE TABLE IF NOT EXISTS table_user(user_id INTEGER PRIMARY KEY AUTOINCREMENT, user_name VARCHAR(20), user_contact INT(10), user_address VARCHAR(255), user_password VARCHAR(255))',
               []
             );
           }
@@ -41,7 +41,7 @@ const HomeScreen = ({ navigation }) => {
                     backgroundColor = 'white'
                     color = 'black'
                     title ='Đăng Nhập'
-                    customClick={()=>navigation.navigate('Register')}
+                    customClick={()=>navigation.navigate('Login')}
                 />
                 <Mybutton1
                     color = 'white'
@@ -52,7 +52,7 @@ const HomeScreen = ({ navigation }) => {
           </View>
           <View style={{borderColor: 'lightgray', borderWidth: 1}}/>
           <View style={{flexDirection:'row'}}>
-                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-heart-circle" color={'deeppink'} size={30} />
+                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="receipt" color={'green'} size={30} />
                 <Mybutton1
                     title='Đơn Hàng đặt cọc'
                     color='black'
@@ -81,28 +81,28 @@ const HomeScreen = ({ navigation }) => {
           </View>
           <View style={{borderColor: 'lightgray', borderWidth: 0.5}}/>
           <View style={{flexDirection:'row'}}>
-                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-heart-circle" color={'goldenrod'} size={30} />
+                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-ribbon" color={'goldenrod'} size={30} />
                 <Mybutton1
                     title='Đồng tốt'
                     color='black'
                 />
           </View>
           <View style={{flexDirection:'row'}}>
-                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-heart-circle" color={'goldenrod'} size={30} />
+                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="newspaper-sharp" color={'goldenrod'} size={30} />
                 <Mybutton1
                     title='Lịch sử giao dịch'
                     color='black'
                 />
           </View>
           <View style={{flexDirection:'row'}}>
-                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-heart-circle" color={'goldenrod'} size={30} />
+                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-wallet" color={'goldenrod'} size={30} />
                 <Mybutton1
                     title='Tài khoản nhận thanh toán'
                     color='black'
                 />
           </View>
           <View style={{flexDirection:'row'}}>
-                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-heart-circle" color={'goldenrod'} size={30} />
+                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-add-circle-sharp" color={'goldenrod'} size={30} />
                 <Mybutton1
                     title='Tạo cửa hàng/ Chuyên trang'
                     color='black'
@@ -110,14 +110,14 @@ const HomeScreen = ({ navigation }) => {
           </View>
           <View style={{borderColor: 'lightgray', borderWidth: 0.5}}/>
           <View style={{flexDirection:'row'}}>
-                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-heart-circle" color={'limegreen'} size={30} />
+                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="fast-food" color={'limegreen'} size={30} />
                 <Mybutton1
                     title='Chợ tốt ưu đãi'
                     color='black'
                 />
           </View>
           <View style={{flexDirection:'row'}}>
-                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-heart-circle" color={'limegreen'} size={30} />
+                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="md-sync-circle" color={'limegreen'} size={30} />
                 <Mybutton1
                     title='Vòng quay may mắn'
                     color='black'
@@ -166,22 +166,6 @@ const HomeScreen = ({ navigation }) => {
             customClick={() => navigation.navigate('Delete')}
           />
         </View>
-        <Text
-          style={{
-            fontSize: 18,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-          Example of SQLite Database in React Native
-        </Text>
-        <Text
-          style={{
-            fontSize: 16,
-            textAlign: 'center',
-            color: 'grey'
-          }}>
-          www.aboutreact.com
-        </Text>
       </View>
       </ScrollView>
     </SafeAreaView>

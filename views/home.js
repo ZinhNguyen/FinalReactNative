@@ -12,33 +12,34 @@ import Categories_inner from '../components/Flatlist_horizontal'
 import Title from '../components/Title_cate'
 
 const HomeApps=()=>{
-    const [isloaded, setDataLoaded] = useState(true);
-    const [loaihoas, setLoaihoaData] = useState();
-
-    const getLoaihoas = async () => {
+  const [isloaded, setDataLoaded] = useState(true);
+  const [hoas, sethoaData] = useState();
+  //const maloai=route.params.maloai;
+  const maloai = 1;
+  //console.log(maloai)
+  const getloaihoas = async () => {
       try {
-        let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/Laydanhmuc');
-        let loaihoa = await response.json();
+          let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/LayLoaiHang?maloai='+maloai);
+          let hoas = await response.json();
 
-        setLoaihoaData(loaihoa);
-        setDataLoaded(false);
+          sethoaData(hoas)
+          setDataLoaded(false)
+          console.log('api/LayLoaiHang?maloai='+maloai);
       } catch (error) {
         console.error(error);
       }
-    };
-
-    useEffect(() => {
-        getLoaihoas();
-    },[]);
-
-    const navigation = useNavigation();
+  };
+  useEffect (() => {
+    getloaihoas();
+  },[]);
+  const navigation = useNavigation();
     //console.log(loaihoas);
         return(
             <View>
               {isloaded ? <ActivityIndicator /> :
               <FlatList
-                data={loaihoas}
-                keyExtractor={item=>item.Maloai}
+                data={hoas}
+                keyExtractor={item=>item.mahang}
                 renderItem={item=>renderItem(item)}
             //  ItemSeparatorComponent={Duongcach}
                 pagingEnabled={false}

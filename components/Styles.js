@@ -143,7 +143,8 @@ const final_style = StyleSheet.create({
   },
   price:{
     color: 'red',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 20
   },
   iconContent:{
     marginTop: 5,
@@ -158,7 +159,7 @@ const final_style = StyleSheet.create({
     marginTop: 5,
     marginLeft: 5,
     marginBottom: 10,
-  }
+  },
 
 });
 
