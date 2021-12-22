@@ -1,53 +1,51 @@
-import React, { useEffect } from 'react';
-import { View, Text, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, SafeAreaView, Alert} from 'react-native';
 import Mybutton from '../components/Mybutton';
 import Mybutton1 from '../components/Mybutton1';
 import Mytext from '../components/Mytext';
 import { openDatabase } from 'react-native-sqlite-storage';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import IconAg from 'react-native-vector-icons/Ionicons';
 
 var db = openDatabase({ name: 'QLBanHang.db' });
 
-const HomeScreen = ({ navigation }) => {
-  useEffect(() => {
-    db.transaction(function (txn) {
-      txn.executeSql(
-        "SELECT name FROM sqlite_master WHERE type='table' AND name='table_user'",
-        [],
-        function (tx, res) {
-          console.log('item:', res.rows.length);
-          if (res.rows.length == 0) {
-            txn.executeSql('DROP TABLE IF EXISTS table_user', []);
-            txn.executeSql(
-              'CREATE TABLE IF NOT EXISTS table_user(user_id INTEGER PRIMARY KEY AUTOINCREMENT, user_name VARCHAR(20), user_contact INT(10), user_address VARCHAR(255), user_password VARCHAR(255))',
-              []
-            );
+const HomeScreen2 = ({route, navigation}) => {
+  const userContact=route.params.userContact;
+  const userName=route.params.userName;
+  const userAddress=route.params.userAddress;
+  console.log(userContact);
+  //console.log(userName);
+  let [inputUserId, setInputUserId] = useState('');
+  let [userData, setUserData] = useState({});
+  let searchUser = () => {
+    console.log(contact);
+    db.transaction((tx) => {
+      tx.executeSql(
+        'SELECT * FROM table_user where user_contact = ?',
+        [contact],
+        (tx, results) => {
+          var len = results.rows.length;
+          if (len > 0) {
+            let res = results.rows.item(0);
+            console.log(res);
+          } else {
+            alert('No user found');
           }
         }
       );
     });
-  }, []);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <View style={{ flex: 1 }}>
-          <View style={{flexDirection:'row', alignContent:'center', backgroundColor: 'deepskyblue', padding: 15, justifyContent: 'space-between'}}>
-            <IconAg style={{alignSelf: 'center'}} name="person-circle-outline" color={'grey'} size={60} />
-            <View style={{flexDirection: 'row', alignSelf: 'center'}}>
-                <Mybutton1
-                    backgroundColor = 'white'
-                    color = 'black'
-                    title ='Đăng Nhập'
-                    customClick={()=>navigation.navigate('Login')}
-                />
-                <Mybutton1
-                    color = 'white'
-                    title ='Đăng Ký'
-                    customClick={()=>navigation.navigate('Register')}
-                />
+        <View style={{flexDirection:'row', alignContent:'center', backgroundColor: 'white', padding: 15, justifyContent: 'flex-start'}}>
+            <IconAg style={{alignSelf: 'center'}} name="person-circle-outline" color={'green'} size={60} />
+            <View style={{flexDirection: 'column', alignSelf: 'center', alignItems: 'flex-start'}} >
+                <Text>{userName}</Text>
+                <Text>{userAddress}</Text>
             </View>
           </View>
           <View style={{borderColor: 'lightgray', borderWidth: 1}}/>
@@ -145,26 +143,16 @@ const HomeScreen = ({ navigation }) => {
                     color='black'
                 />
           </View>
-          {/* <Mybutton
-            title="Register"
-            customClick={() => navigation.navigate('Register')}
-          />
-          <Mybutton
-            title="Update"
-            customClick={() => navigation.navigate('Update')}
-          />
-          <Mybutton
-            title="View"
-            customClick={() => navigation.navigate('View')}
-          />
-          <Mybutton
-            title="View All"
-            customClick={() => navigation.navigate('ViewAll')}
-          />
-          <Mybutton
-            title="Delete"
-            customClick={() => navigation.navigate('Delete')}
-          /> */}
+          <View style={{flexDirection:'row'}}>
+                <IconAg style={{alignSelf: 'center', marginLeft: 20}} name="log-out" color={'gray'} size={30} />
+                <Mybutton1                    
+                    title='Đăng Xuất'
+                    color='black'
+                    customClick={
+                        ()=>{Alert.alert('Ban da thoat'),
+                            navigation.navigate('HomeScreen')}}
+                />
+          </View>
         </View>
       </View>
       </ScrollView>
@@ -172,4 +160,4 @@ const HomeScreen = ({ navigation }) => {
   );
 };
 
-export default HomeScreen;
+export default HomeScreen2;

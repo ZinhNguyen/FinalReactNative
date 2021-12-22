@@ -4,7 +4,7 @@ import Mytextinput from '../components/Mytextinput';
 import Mybutton from '../components/Mybutton';
 import { openDatabase } from 'react-native-sqlite-storage';
 
-var db = openDatabase({ name: 'UserDatabase.db' });
+var db = openDatabase({ name: 'QLBanHang.db' });
 
 const DeleteUser = ({ navigation }) => {
   let [inputUserId, setInputUserId] = useState('');

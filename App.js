@@ -25,10 +25,10 @@ import Mh_detail1 from './views/details'
 import Mh_Product from './views/product'
 import MasterDetail from './components/Masterdetail'
 import HomeScreen from './views/HomeScreen1';
+import HomeScreen2 from './views/HomeScreen2';
 import RegisterUser from './views/RegisterUser1';
 import UpdateUser from './views/UpdateUser';
-import ViewUser from './views/Login';
-import Login from './views/Login'
+import LoginUser from './views/Login'
 import ViewAllUser from './views/ViewAllUser1';
 import DeleteUser from './views/DeleteUser';
 
@@ -37,45 +37,81 @@ const Tab= createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const HomeNav=createStackNavigator();
 
+const UserInfor = () =>{
+  return(
+      <HomeNav.Navigator initialRouteName ="HomeScreen">
+      <HomeNav.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{
+            title: 'Home', //Set Header Title
+            headerShown: false,
+            headerStyle: {
+              backgroundColor: '#f4511e', //Set Header color
+            },
+            headerTintColor: '#fff', //Set Header text color
+            headerTitleStyle: {
+              fontWeight: 'bold', //Set Header text style
+            },
+          }}
+        />
+      <HomeNav.Screen
+          name="HomeScreen2"
+          component={HomeScreen2}
+          options = {({route}) => ({
+            headerShown:false,
+            title: route.params.userName, //Set Header Title
+            headerStyle: {
+              backgroundColor: '#f4511e', //Set Header color
+            },
+            headerTintColor: '#fff', //Set Header text color
+            headerTitleStyle: {
+              fontWeight: 'bold', //Set Header text style
+            },
+          })}
+        />
+        <HomeNav.Screen
+          name="Login"
+          component={LoginUser}
+          options={{
+            headerShown:false,
+            title: 'Login User', //Set Header Title
+            headerStyle: {
+              backgroundColor: '#f4511e', //Set Header color
+            },
+            headerTintColor: '#fff', //Set Header text color
+            headerTitleStyle: {
+              fontWeight: 'bold', //Set Header text style
+            },
+          }}
+        />
+        <HomeNav.Screen
+          name="Register"
+          component={RegisterUser}
+          options={{
+            headerShown:false,
+            title: 'Register User', //Set Header Title
+            headerStyle: {
+              backgroundColor: '#f4511e', //Set Header color
+            },
+            headerTintColor: '#fff', //Set Header text color
+            headerTitleStyle: {
+              fontWeight: 'bold', //Set Header text style
+            },
+          }}
+        />
+      </HomeNav.Navigator>
+  )
+}
 
 const AccountFunction=()=>(
-  <HomeNav.Navigator initialRouteName="HomeScreen">
+  <HomeNav.Navigator initialRouteName="UserInfor">
     <HomeNav.Screen
-      name="HomeScreen"
-      component={HomeScreen}
+      name="UserInfor"
+      component={UserInfor}
       options={{
         headerShown: false,
         title: 'Home', //Set Header Title
-        headerStyle: {
-          backgroundColor: '#f4511e', //Set Header color
-        },
-        headerTintColor: '#fff', //Set Header text color
-        headerTitleStyle: {
-          fontWeight: 'bold', //Set Header text style
-        },
-      }}
-    />
-    <HomeNav.Screen
-      name="View"
-      component={ViewUser}
-      options={{
-        title: 'View User', //Set Header Title
-        headerStyle: {
-          backgroundColor: '#f4511e', //Set Header color
-        },
-        headerTintColor: '#fff', //Set Header text color
-        headerTitleStyle: {
-          fontWeight: 'bold', //Set Header text style
-        },
-      }}
-    />
-    <HomeNav.Screen
-      name="Login"
-      component={Login}
-      options={{
-        headerShown: false,
-        tabBarVisible: false,
-        title: 'Login User', //Set Header Title
         headerStyle: {
           backgroundColor: '#f4511e', //Set Header color
         },
@@ -217,12 +253,12 @@ export class App extends Component {
       // </View>
       // </SafeAreaView>
       <>    
-         {/* <StatusBar   
-           translucent 
-            backgroundColor="transparent"
+         <StatusBar   
+           //translucent 
+           backgroundColor="deepskyblue"
            barStyle = "dark-content"
            hidden = {false}   
-          />     */}
+          />    
        <NavigationContainer>
          <Drawer.Navigator>
            <Drawer.Screen name = "Home" 

@@ -3,7 +3,10 @@
 // Screen to view single user
 
 import React, { useState } from 'react';
-import { Text, View, SafeAreaView, Image, TouchableOpacity, ScrollView, KeyboardAvoidingView,} from 'react-native';
+import { Text, View, SafeAreaView, 
+      Image, TouchableOpacity, ScrollView, 
+      KeyboardAvoidingView, Alert
+    } from 'react-native';
 import Mytextinput from '../components/Mytextinput';
 import Mybutton from '../components/Mybutton';
 import { openDatabase } from 'react-native-sqlite-storage';
@@ -14,25 +17,51 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 var db = openDatabase({ name: 'QLBanHang.db' });
 
-const ViewUser = () => {
+const ViewUser = ({navigation}) => {
     
-  let [inputUserId, setInputUserId] = useState('');
-  let [inputUserName, setInputUserName] = useState('');
+  let [inputUserContact, setInputUserContact] = useState('');
+  let [inputUserPassword, setInputUserPassword] = useState('');
   let [userData, setUserData] = useState({});
 
-  let searchUser = () => {
-    console.log(inputUserId);
-    console.log(inputUserName);
+  let Login = () => {
+    console.log(inputUserContact);
+    console.log(inputUserPassword);
+    if (!inputUserContact) {
+      alert('Vui lòng nhập số điện thoại');
+      return;
+    }
+    if (!inputUserPassword) {
+        alert('Vui lòng nhập mật khẩu');
+        return;
+    }
     setUserData({});
     db.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM table_user where user_id = ? and user_name = ?',
-        [inputUserId, inputUserName],
+        'SELECT * FROM table_user where user_contact = ? and user_password = ?',
+        [inputUserContact, inputUserPassword],
         (tx, results) => {
           var len = results.rows.length;
           console.log('len', len);
+          
           if (len > 0) {
+            let res = results.rows.item(0);
+            console.log(res.user_address);
             setUserData(results.rows.item(0));
+            Alert.alert(
+              'Success',
+              'You are Login Successfully',
+              [
+                {
+                  text: 'Ok',                 
+                  onPress: () => navigation.navigate('HomeScreen2',{
+                    userContact : inputUserContact, 
+                    userName: res.user_name,
+                    userAddress: res.user_address
+                  }),
+                },
+              ],
+              { cancelable: false }
+            );
           } else {
             alert('Email/ Mật khẩu không đúng');
           }
@@ -40,7 +69,7 @@ const ViewUser = () => {
       );
     });
   };
-
+  const onPress = () => navigation.navigate('Register');
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
@@ -57,7 +86,7 @@ const ViewUser = () => {
                 <Mytextinput
                   placeholder="Nhập Email/ Số điện thoại"
                   onChangeText={
-                    (inputUserId) => setInputUserId(inputUserId)
+                    (inputUserContact) => setInputUserContact(inputUserContact)
                   }
                   style={{ padding: 10 }}
                 />
@@ -65,17 +94,19 @@ const ViewUser = () => {
                   placeholder="Nhập mật khẩu"
                   secureTextEntry={true}
                   onChangeText={
-                    (inputUserName) => setInputUserName(inputUserName)
+                    (inputUserPassword) => setInputUserPassword(inputUserPassword)
                   }
                   style={{ padding: 10 }}
                 />
                 <TouchableOpacity style={Styles.loginRight}>
                     <Text style={Styles.loginFogotText}>Quên mật khẩu?</Text>
                 </TouchableOpacity>
-                <Mybutton title="Search User" customClick={searchUser} />
+                <Mybutton title="Đăng Nhập" customClick={Login} />
                 <View style={Styles.loginCenter}>
                     <Text>Bạn chưa có tài khoản? </Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={onPress}
+                    >
                         <Text style={Styles.loginNow}> Đăng ký ngay</Text>
                         
                     </TouchableOpacity>

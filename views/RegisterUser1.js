@@ -22,7 +22,7 @@ const RegisterUser = ({ navigation }) => {
   let [userAddress, setUserAddress] = useState('');
   let [userPassword, setUserPassword] = useState('');
 
-  let register_user = () => {
+  let register_user = ({navigation}) => {
     console.log(userName, userContact, userAddress, userPassword);
 
     if (!userName) {
@@ -66,7 +66,7 @@ const RegisterUser = ({ navigation }) => {
       );
     });
   };
-
+  const onPress = () => navigation.navigate('Login');
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
@@ -127,7 +127,9 @@ const RegisterUser = ({ navigation }) => {
                 <Mybutton title="Đăng Ký" customClick={register_user} />
                 <View style={Styles.loginCenter}>
                     <Text>Khi đăng ký là bạn chấp nhận </Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                      onPress={onPress}
+                    >
                         <Text style={Styles.loginNow}> điều khoản sử dụng</Text>
                     </TouchableOpacity>
                 </View>         

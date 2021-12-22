@@ -48,6 +48,7 @@ const Masterdetail = () => {
       name='Detail1'
       component={Mh_detail1}
       options={({route}) => ({
+        //headerShown: false,
         title: route.params.tenloai,
         headerTitleAlign:'center',
       })}

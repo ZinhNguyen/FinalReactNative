@@ -11,7 +11,7 @@ import Mytextinput from '../components/Mytextinput';
 import Mybutton from '../components/Mybutton';
 import { openDatabase } from 'react-native-sqlite-storage';
 
-var db = openDatabase({ name: 'UserDatabase.db' });
+var db = openDatabase({ name: 'QLBanHang.db' });
 
 const UpdateUser = ({ navigation }) => {
   let [inputUserId, setInputUserId] = useState('');
@@ -35,6 +35,7 @@ const UpdateUser = ({ navigation }) => {
           var len = results.rows.length;
           if (len > 0) {
             let res = results.rows.item(0);
+            console.log(res);
             updateAllStates(
               res.user_name,
               res.user_contact,
