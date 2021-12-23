@@ -7,6 +7,7 @@ import styles from '../components/Styles';
 import { useNavigation } from '@react-navigation/core'
 import Slideshow from '../components/SlideShow'
 import Categories from '../components/Category_Horizontal'
+import Categories_Bottom from '../components/Category_Horizontal_Bottom'
 import Newproduct from '../components/Newproduct'
 import Categories_inner from '../components/Flatlist_horizontal'
 import Title from '../components/Title_cate'
@@ -19,12 +20,12 @@ const HomeApps=()=>{
   //console.log(maloai)
   const getloaihoas = async () => {
       try {
-          let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/LayLoaiHang?maloai='+maloai);
+          let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/LayNhanHang');
           let hoas = await response.json();
 
           sethoaData(hoas)
           setDataLoaded(false)
-          console.log('api/LayLoaiHang?maloai='+maloai);
+          //console.log('api/LayNhanHang');
       } catch (error) {
         console.error(error);
       }
@@ -38,8 +39,8 @@ const HomeApps=()=>{
             <View>
               {isloaded ? <ActivityIndicator /> :
               <FlatList
-                data={hoas}
-                keyExtractor={item=>item.mahang}
+                //data={hoas}
+                keyExtractor={item=>item.manhan}
                 renderItem={item=>renderItem(item)}
             //  ItemSeparatorComponent={Duongcach}
                 pagingEnabled={false}
@@ -62,7 +63,7 @@ function renderItem({item, index}) {
             () => navigation.navigate('Detail', {maloai: item.Maloai})
         }>
             <View>
-                <Loaihoa ma={item.Maloai} ten={item.Tenloai}/>
+                <Loaihoa ma={item.manha} ten={item.tennhan}/>
             </View>
         </TouchableOpacity>
   );
@@ -84,9 +85,11 @@ function Header() {
     <>
         <Slideshow/>
         <Title content ="Khám phá danh mục"/>
-        <Categories/>
+        <Categories_Bottom/>         
         <Title content ="Tin mới đăng"/> 
-        <Newproduct/>   
+        <Newproduct/>
+        {/* <Title content ="Hàng Chính Hãng"/> */}
+        <Categories/>
     </>
   );
 }

@@ -19,7 +19,7 @@ const product=({route})=>{
 
             sethoaData(hoas)
             setDataLoaded(false)
-            console.log('api/XulyController/LayHoaTheoLoai?maloai='+maloai);
+            //console.log('api/XulyController/LayHoaTheoLoai?maloai='+maloai);
         } catch (error) {
           console.error(error);
         }
@@ -50,7 +50,7 @@ function handleSelection (id){
 }
 
 function renderItem({item, index}) {
-    console.log(item);
+    //console.log(item);
   return (
     <TouchableOpacity
         onPress ={

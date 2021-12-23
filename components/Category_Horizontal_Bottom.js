@@ -7,13 +7,13 @@ import styles from '../components/Styles';
 import { useNavigation } from '@react-navigation/core'
 import Slideshow from '../components/SlideShow'
 
-const Category_Horizontal=()=>{
+const Category_Horizontal_Bottom=()=>{
     const [isloaded, setDataLoaded] = useState(true);
     const [loaihoas, setLoaihoaData] = useState();
 
     const getLoaihoas = async () => {
       try {
-        let response = await fetch('http://192.168.1.8/WebapiQLBanHoa/api/Laydanhmuc');
+        let response = await fetch('http://192.168.1.8/WebapiQLBanHoa/api/LayNhanHang');
         let loaihoa = await response.json();
 
         setLoaihoaData(loaihoa);
@@ -34,7 +34,7 @@ const Category_Horizontal=()=>{
               {isloaded ? <ActivityIndicator /> :
               <FlatList
               data={loaihoas}
-              keyExtractor={item=>item.Maloai}
+              keyExtractor={item=>item.manhan}
               renderItem={item=>renderItem(item)}
             //   ItemSeparatorComponent={Duongcach}
               pagingEnabled={false}
@@ -57,23 +57,29 @@ function renderItem({item, index}) {
   return (
     <TouchableOpacity
         onPress ={
-            () => navigation.navigate('Product', {maloai: item.Maloai})
+            () => navigation.navigate('Product', {manhan: item.manhan})
         }>
             <View>
-                <Loaihang ma={item.Maloai} ten={item.Tenloai} hinh={item.Hinh} />
+                <Loaihang ma={item.manhan} ten={item.tennhan} hinh={item.hinh} />
             </View>
         </TouchableOpacity>
   );
 }
 
-
+function Loaihoa({ma, ten}) {
+  return (
+    <View key={ma}>
+      <Text style={styles.tieude}>{ten}</Text>
+    </View>
+  );
+}
 
 function Loaihang({ma, ten, hinh}) {
   //console.log({hinh});
   return (
     <View key={ma} style={styles.ContainerImageIcon}>     
       <Image style={styles.ImageIcon} source ={{uri:hinh}}/>   
-      <Text style={styles.iconContent}>{ten}</Text>
+      {/* <Text style={styles.iconContent}>{ten}</Text> */}
     </View>
   );
 }
@@ -95,4 +101,4 @@ function Loaihang({ma, ten, hinh}) {
 //   );
 // }
 }
-export default Category_Horizontal;
+export default Category_Horizontal_Bottom;
