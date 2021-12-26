@@ -31,6 +31,7 @@ import UpdateUser from './views/UpdateUser';
 import LoginUser from './views/Login'
 import ViewAllUser from './views/ViewAllUser1';
 import DeleteUser from './views/DeleteUser';
+import Searching from './views/Searching1'
 
 
 const Tab= createBottomTabNavigator();
@@ -47,7 +48,7 @@ const UserInfor = () =>{
             title: 'Home', //Set Header Title
             headerShown: false,
             headerStyle: {
-              backgroundColor: '#f4511e', //Set Header color
+              backgroundColor: 'deepskyblue', //Set Header color
             },
             headerTintColor: '#fff', //Set Header text color
             headerTitleStyle: {
@@ -62,7 +63,7 @@ const UserInfor = () =>{
             headerShown:false,
             title: route.params.userName, //Set Header Title
             headerStyle: {
-              backgroundColor: '#f4511e', //Set Header color
+              backgroundColor: 'deepskyblue', //Set Header color
             },
             headerTintColor: '#fff', //Set Header text color
             headerTitleStyle: {
@@ -74,10 +75,10 @@ const UserInfor = () =>{
           name="Login"
           component={LoginUser}
           options={{
-            headerShown:false,
+            //headerShown:false,
             title: 'Login User', //Set Header Title
             headerStyle: {
-              backgroundColor: '#f4511e', //Set Header color
+              backgroundColor: 'deepskyblue', //Set Header color
             },
             headerTintColor: '#fff', //Set Header text color
             headerTitleStyle: {
@@ -89,10 +90,10 @@ const UserInfor = () =>{
           name="Register"
           component={RegisterUser}
           options={{
-            headerShown:false,
+            //headerShown:false,
             title: 'Register User', //Set Header Title
             headerStyle: {
-              backgroundColor: '#f4511e', //Set Header color
+              backgroundColor: 'deepskyblue', //Set Header color
             },
             headerTintColor: '#fff', //Set Header text color
             headerTitleStyle: {
@@ -113,7 +114,7 @@ const AccountFunction=()=>(
         headerShown: false,
         title: 'Home', //Set Header Title
         headerStyle: {
-          backgroundColor: '#f4511e', //Set Header color
+          backgroundColor: 'deepskyblue', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -127,7 +128,7 @@ const AccountFunction=()=>(
       options={{
         title: 'View Users', //Set Header Title
         headerStyle: {
-          backgroundColor: '#f4511e', //Set Header color
+          backgroundColor: 'deepskyblue', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -141,21 +142,7 @@ const AccountFunction=()=>(
       options={{
         title: 'Update User', //Set Header Title
         headerStyle: {
-          backgroundColor: '#f4511e', //Set Header color
-        },
-        headerTintColor: '#fff', //Set Header text color
-        headerTitleStyle: {
-          fontWeight: 'bold', //Set Header text style
-        },
-      }}
-    />
-    <HomeNav.Screen
-      name="Register"
-      component={RegisterUser}
-      options={{
-        title: 'Register User', //Set Header Title
-        headerStyle: {
-          backgroundColor: '#f4511e', //Set Header color
+          backgroundColor: 'deepskyblue', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -169,7 +156,7 @@ const AccountFunction=()=>(
       options={{
         title: 'Delete User', //Set Header Title
         headerStyle: {
-          backgroundColor: '#f4511e', //Set Header color
+          backgroundColor: 'deepskyblue', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
@@ -214,8 +201,9 @@ class TabControl extends Component {
               }}
             /> 
             <Tab.Screen name= "Searching" 
-              component={Flatlist_Ho}
+              component={Searching}
               options={{
+                headerShown: false,
                 tabBarLabel: 'Searching',
                 tabBarIcon: ({ color, size}) => (
                   <IconAg name="search-outline" color={color} size={30} />

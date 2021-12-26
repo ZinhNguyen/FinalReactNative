@@ -85,11 +85,11 @@ function Header() {
     <>
         <Slideshow/>
         <Title content ="Khám phá danh mục"/>
-        <Categories_Bottom/>         
+        <Categories/>       
         <Title content ="Tin mới đăng"/> 
         <Newproduct/>
         {/* <Title content ="Hàng Chính Hãng"/> */}
-        <Categories/>
+        <Categories_Bottom/>         
     </>
   );
 }

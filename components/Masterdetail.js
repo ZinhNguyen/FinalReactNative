@@ -15,6 +15,7 @@ import Mh_Hoa from '../views/mh_hoa'
 import Mh_Master from '../views/home'
 import Mh_detail1 from '../views/details'
 import Mh_Product from '../views/product'
+import Mh_ProductBrand from '../views/ProductBrand'
 
 
 const Tab= createBottomTabNavigator();
@@ -58,6 +59,14 @@ const Masterdetail = () => {
       component={Mh_Product}
       options={({route}) => ({
         title: route.params.tenloai,
+        headerTitleAlign:'center',
+      })}
+    />
+    <HomeNav.Screen
+      name='ProductBrand'
+      component={Mh_ProductBrand}
+      options={({route}) => ({
+        title: route.params.tennhan,
         headerTitleAlign:'center',
       })}
     />

@@ -22,7 +22,7 @@ const RegisterUser = ({ navigation }) => {
   let [userAddress, setUserAddress] = useState('');
   let [userPassword, setUserPassword] = useState('');
 
-  let register_user = ({navigation}) => {
+  let register_user = () => {
     console.log(userName, userContact, userAddress, userPassword);
 
     if (!userName) {
@@ -41,9 +41,8 @@ const RegisterUser = ({ navigation }) => {
         alert('Please fill Password');
         return;
     }
-
-    db.transaction(function (tx) {
-      
+    
+    db.transaction(function (tx) {    
       tx.executeSql(
         'INSERT INTO table_user (user_name, user_contact, user_address, user_password) VALUES (?,?,?,?)',
         [userName, userContact, userAddress, userPassword],
@@ -56,7 +55,11 @@ const RegisterUser = ({ navigation }) => {
               [
                 {
                   text: 'Ok',
-                  onPress: () => navigation.navigate('HomeScreen'),
+                  onPress: () => navigation.navigate('HomeScreen2',{
+                    userContact : userContact, 
+                    userName: userName,
+                    userAddress: userAddress
+                  }),
                 },
               ],
               { cancelable: false }

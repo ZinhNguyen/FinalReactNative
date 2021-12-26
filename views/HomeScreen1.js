@@ -145,7 +145,7 @@ const HomeScreen = ({ navigation }) => {
                     color='black'
                 />
           </View>
-          {/* <Mybutton
+          <Mybutton
             title="Register"
             customClick={() => navigation.navigate('Register')}
           />
@@ -164,7 +164,7 @@ const HomeScreen = ({ navigation }) => {
           <Mybutton
             title="Delete"
             customClick={() => navigation.navigate('Delete')}
-          /> */}
+          />
         </View>
       </View>
       </ScrollView>

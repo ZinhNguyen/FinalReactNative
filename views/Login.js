@@ -135,10 +135,10 @@ const ViewUser = ({navigation}) => {
               marginRight: 35,
               marginTop: 10
             }}>
-            <Text>User Id: {userData.user_id}</Text>
+            {/* <Text>User Id: {userData.user_id}</Text>
             <Text>User Name: {userData.user_name}</Text>
             <Text>User Contact: {userData.user_contact}</Text>
-            <Text>User Address: {userData.user_address}</Text>
+            <Text>User Address: {userData.user_address}</Text> */}
           </View>
           </KeyboardAvoidingView>
           </ScrollView>

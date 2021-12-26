@@ -160,6 +160,16 @@ const final_style = StyleSheet.create({
     marginLeft: 5,
     marginBottom: 10,
   },
+  container: {
+    //marginTop: 30,
+    padding: 2,
+  },
+  item: {
+    backgroundColor: "#f5f520",
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
 
 });
 
