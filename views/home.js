@@ -11,16 +11,17 @@ import Categories_Bottom from '../components/Category_Horizontal_Bottom'
 import Newproduct from '../components/Newproduct'
 import Categories_inner from '../components/Flatlist_horizontal'
 import Title from '../components/Title_cate'
+import * as myConstClass from '../components/path'
 
 const HomeApps=()=>{
   const [isloaded, setDataLoaded] = useState(true);
   const [hoas, sethoaData] = useState();
   //const maloai=route.params.maloai;
-  const maloai = 1;
+  //const maloai = 1;
   //console.log(maloai)
   const getloaihoas = async () => {
       try {
-          let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/LayNhanHang');
+          let response = await fetch('http://'+myConstClass.ip+'/webapiqlbanhoa/api/LayHangMoi');
           let hoas = await response.json();
 
           sethoaData(hoas)
@@ -85,11 +86,12 @@ function Header() {
     <>
         <Slideshow/>
         <Title content ="Khám phá danh mục"/>
-        <Categories/>       
+        <Categories/>
+               
         <Title content ="Tin mới đăng"/> 
         <Newproduct/>
         {/* <Title content ="Hàng Chính Hãng"/> */}
-        <Categories_Bottom/>         
+        <Categories_Bottom/>  
     </>
   );
 }

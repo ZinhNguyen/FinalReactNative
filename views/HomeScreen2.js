@@ -44,7 +44,7 @@ const HomeScreen2 = ({route, navigation}) => {
         <View style={{flexDirection:'row', alignContent:'center', backgroundColor: 'white', padding: 15, justifyContent: 'flex-start'}}>
             <IconAg style={{alignSelf: 'center'}} name="person-circle-outline" color={'green'} size={60} />
             <View style={{flexDirection: 'column', alignSelf: 'center', alignItems: 'flex-start'}} >
-                <Text>{userName}</Text>
+                <Text>Hello <Text style={{fontWeight:'bold'}}> {userName}</Text></Text>
                 <Text>{userAddress}</Text>
             </View>
           </View>

@@ -1,5 +1,5 @@
 import React, {Component, useState, useEffect} from 'react';
-import {Text, View, FlatList, TouchableOpacity, Image} from 'react-native';
+import {Text, View, FlatList, TouchableOpacity, Image, Alert} from 'react-native';
 import styles from '../components/Styles';
 // import {hoas} from './data/hoa.json';
 // import Duongcach from './duongcach';
@@ -9,9 +9,37 @@ import { StretchInX } from 'react-native-reanimated';
 import { SearchBar } from 'react-native-elements';
 import Mytextinput from '../components/Mytextinput';
 import Mybutton from '../components/Mybutton'
+import * as myConstClass from '../components/path'
+
 //import { Searchbar } from 'react-native-paper';
 
 
+// class THDautrang1 extends Component {
+
+//   state = {
+//     search: '',
+//   };
+//   updateSearch = (search) => {
+//     //console.log(search);
+//     this.setState({ search });
+//     Searching(a=search);
+//   };
+
+//    render() {
+//     const { search } = this.state;
+//      return (
+//        <>
+//           <SearchBar
+//           containerStyle={{backgroundColor: 'deepskyblue'}}
+//           inputContainerStyle={{backgroundColor: 'white'}}
+//           placeholder="Ban can tim gi?"
+//           onChangeText={this.updateSearch}
+//           value={search}
+//           />
+//        </>
+//      )
+//    }
+//   }
 
     // function Trans(ao, an) {
     //   return (
@@ -35,31 +63,32 @@ import Mybutton from '../components/Mybutton'
     // };
 
 const Searching=({route})=>{
-
     const [isloaded, setDataLoaded] = useState(true);
-    const [hoas, sethoaData] = useState();
+    const [hoas, sethoaData] = useState(0);
     //const tenhang=route.params.Searching;
-    const tenhang = 'áo';
-    console.log(tenhang);
 
+    const tenhang = route;
     const getloaihoas = async () => {
         try {
-            let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/LayTenHang?tenhang=%'+ tenhang + '%');
+            let response = await fetch('http://'+myConstClass.ip+'/webapiqlbanhoa/api/LayTenHang?tenhang=%'+ tenhang + '%');
             let hoas = await response.json();
-
+            //console.log(tenhang);
             sethoaData(hoas)
             setDataLoaded(false)
             console.log('api/LayTenHang?tenhang='+tenhang);
         } catch (error) {
-          console.error(error);
+          //console.error(error);
+          //Alert.alert('Not found', route)
+          textNotFound()
         }
     };
     useEffect (() => {
+      //console.log('a');
       getloaihoas();
-    },[]);
+    },[tenhang]);
+
     const navigation = useNavigation();
     //const HoaChon=hoas.filter(x=>x.maloai==maloai);
-
         return(
             <>
             <FlatList
@@ -68,11 +97,12 @@ const Searching=({route})=>{
             renderItem={item=>renderItem(item)}
             //ItemSeparatorComponent={Duong}
             pagingEnabled={false}
-            ListHeaderComponent={THDautrang}
-            //ListFooterComponent={Cuoitrang}
+            //ListHeaderComponent={THDautrang}
+            ListFooterComponent={Cuoitrang}
             numColumns = '2'
             bounces
             //stickyHeaderIndices ={[0]}
+            
             />
             </>
         )
@@ -82,7 +112,7 @@ function handleSelection (id){
 }
 
 function renderItem({item, index}) {
-    //console.log(item);
+    //console.log(item.tenhang);
 
   return (
     <TouchableOpacity
@@ -110,47 +140,17 @@ function Loaihang({ma, ten, dongia, hinh}) {
   );
 }
 
+
+
 // function Duong() {
 //   return <Duongcach />;
 // }
 
-// function THDautrang() {
-//   return (
-//     //     <Searchbar
-//     //     placeholder="Search"
-//     //     onChangeText={onChangeSearch}
-//     //     value={searchQuery}
-//     //   />  
-//     );
-// }
+function Cuoitrang() {
+  return (
+    <View style={{marginBottom: 60}}/>
+    );
+}
 
 }
 export default Searching;
-
-class THDautrang extends Component {
-
-    state = {
-      search: '',
-    };
-    updateSearch = (search) => {
-      //console.log(search);
-      this.setState({ search });
-      //Searching(a=search);
-    };
-  
-     render() {
-      const { search } = this.state;
-       return (
-         <>
-            <SearchBar
-            containerStyle={{backgroundColor: 'deepskyblue'}}
-            inputContainerStyle={{backgroundColor: 'white'}}
-            placeholder="Ban can tim gi?"
-            onChangeText={this.updateSearch}
-            value={search}
-            />
-         </>
-       )
-     }
-    }
-  

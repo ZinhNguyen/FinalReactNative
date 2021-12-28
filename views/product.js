@@ -5,6 +5,7 @@ import styles from '../components/Styles';
 // import Duongcach from './duongcach';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
+import * as myConstClass from '../components/path'
 
 const product=({route})=>{
 
@@ -14,7 +15,7 @@ const product=({route})=>{
     //console.log(maloai)
     const getloaihoas = async () => {
         try {
-            let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/LayLoaiHang?maloai='+maloai);
+            let response = await fetch('http://'+myConstClass.ip+'/webapiqlbanhoa/api/LayLoaiHang?maloai='+maloai);
             let hoas = await response.json();
 
             sethoaData(hoas)

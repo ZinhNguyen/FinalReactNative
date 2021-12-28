@@ -6,6 +6,7 @@ import styles from '../components/Styles';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
 import Slideshow from '../components/SlideShow'
+import * as myConstClass from '../components/path'
 
 const Category_Horizontal=()=>{
     const [isloaded, setDataLoaded] = useState(true);
@@ -13,7 +14,7 @@ const Category_Horizontal=()=>{
 
     const getLoaihoas = async () => {
       try {
-        let response = await fetch('http://192.168.1.8/WebapiQLBanHoa/api/Laydanhmuc');
+        let response = await fetch('http://'+myConstClass.ip+'/WebapiQLBanHoa/api/Laydanhmuc');
         let loaihoa = await response.json();
 
         setLoaihoaData(loaihoa);

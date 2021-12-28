@@ -41,8 +41,9 @@ const RegisterUser = ({ navigation }) => {
         alert('Please fill Password');
         return;
     }
-    
-    db.transaction(function (tx) {    
+
+    db.transaction(function (tx) {
+      
       tx.executeSql(
         'INSERT INTO table_user (user_name, user_contact, user_address, user_password) VALUES (?,?,?,?)',
         [userName, userContact, userAddress, userPassword],
@@ -129,11 +130,11 @@ const RegisterUser = ({ navigation }) => {
                 </View>
                 <Mybutton title="Đăng Ký" customClick={register_user} />
                 <View style={Styles.loginCenter}>
-                    <Text>Khi đăng ký là bạn chấp nhận </Text>
+                    <Text>Tôi đã có tài khoản </Text>
                     <TouchableOpacity
                       onPress={onPress}
                     >
-                        <Text style={Styles.loginNow}> điều khoản sử dụng</Text>
+                        <Text style={Styles.loginNow}> Đăng nhập ngay</Text>
                     </TouchableOpacity>
                 </View>         
             </View>

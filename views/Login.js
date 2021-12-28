@@ -1,7 +1,3 @@
-// Example: Example of SQLite Database in React Native
-// https://aboutreact.com/example-of-sqlite-database-in-react-native
-// Screen to view single user
-
 import React, { useState } from 'react';
 import { Text, View, SafeAreaView, 
       Image, TouchableOpacity, ScrollView, 
@@ -47,21 +43,23 @@ const ViewUser = ({navigation}) => {
             let res = results.rows.item(0);
             console.log(res.user_address);
             setUserData(results.rows.item(0));
-            Alert.alert(
-              'Success',
-              'You are Login Successfully',
-              [
-                {
-                  text: 'Ok',                 
-                  onPress: () => navigation.navigate('HomeScreen2',{
-                    userContact : inputUserContact, 
-                    userName: res.user_name,
-                    userAddress: res.user_address
-                  }),
-                },
-              ],
-              { cancelable: false }
-            );
+
+                Alert.alert(
+                  'Success',
+                  'You are Login Successfully',
+                  [
+                    {
+                      text: 'Ok',                 
+                      onPress: () => navigation.navigate('HomeScreen2',{
+                        userContact : inputUserContact, 
+                        userName: res.user_name,
+                        userAddress: res.user_address
+                      }),
+                    },
+                  ],
+                  { cancelable: false }
+                );
+
           } else {
             alert('Email/ Mật khẩu không đúng');
           }
@@ -70,6 +68,8 @@ const ViewUser = ({navigation}) => {
     });
   };
   const onPress = () => navigation.navigate('Register');
+  const onPress1 = () => navigation.navigate('HomeScreen');
+  
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
@@ -98,7 +98,7 @@ const ViewUser = ({navigation}) => {
                   }
                   style={{ padding: 10 }}
                 />
-                <TouchableOpacity style={Styles.loginRight}>
+                <TouchableOpacity onPress={onPress1} style={Styles.loginRight} >
                     <Text style={Styles.loginFogotText}>Quên mật khẩu?</Text>
                 </TouchableOpacity>
                 <Mybutton title="Đăng Nhập" customClick={Login} />
@@ -129,17 +129,17 @@ const ViewUser = ({navigation}) => {
                     </TouchableOpacity>     
                 </View>           
             </View>
-          <View
+          {/* <View
             style={{
               marginLeft: 35,
               marginRight: 35,
               marginTop: 10
             }}>
-            {/* <Text>User Id: {userData.user_id}</Text>
+            <Text>User Id: {userData.user_id}</Text>
             <Text>User Name: {userData.user_name}</Text>
             <Text>User Contact: {userData.user_contact}</Text>
-            <Text>User Address: {userData.user_address}</Text> */}
-          </View>
+            <Text>User Address: {userData.user_address}</Text>
+          </View> */}
           </KeyboardAvoidingView>
           </ScrollView>
         </View>

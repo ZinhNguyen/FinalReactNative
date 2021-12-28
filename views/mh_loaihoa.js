@@ -5,6 +5,7 @@ import styles from '../components/Styles';
 // import Duongcach from './duongcach';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
+import * as myConstClass from '../components/path'
 
 const Mh_LoaiHoa=()=>{
     const [isloaded, setDataLoaded] = useState(true);
@@ -12,7 +13,7 @@ const Mh_LoaiHoa=()=>{
 
     const getLoaihoas = async () => {
       try {
-        let response = await fetch('http://webapibanhoa.somee.com/api/XulyController/LayLoaiHoa');
+        let response = await fetch('http://'+myConstClass.ip+'/api/XulyController/LayLoaiHoa');
         let loaihoa = await response.json();
 
         setLoaihoaData(loaihoa);

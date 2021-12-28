@@ -5,17 +5,18 @@ import styles from '../components/Styles';
 // import Duongcach from './duongcach';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
+import * as myConstClass from '../components/path'
 
 const Newproduct=({route})=>{
 
     const [isloaded, setDataLoaded] = useState(true);
     const [hoas, sethoaData] = useState();
     //const maloai=route.params.maloai;
-    const maloai = 1;
+    //const maloai = 1;
     //console.log(maloai)
     const getloaihoas = async () => {
         try {
-            let response = await fetch('http://192.168.1.8/webapiqlbanhoa/api/LayLoaiHang?maloai='+maloai);
+            let response = await fetch('http://'+myConstClass.ip+'/WebapiQLBanHoa/api/LayHangMoi');
             let hoas = await response.json();
 
             sethoaData(hoas)
