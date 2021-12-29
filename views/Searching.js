@@ -5,68 +5,15 @@ import styles from '../components/Styles';
 // import Duongcach from './duongcach';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
-import { StretchInX } from 'react-native-reanimated';
-import { SearchBar } from 'react-native-elements';
-import Mytextinput from '../components/Mytextinput';
-import Mybutton from '../components/Mybutton'
 import * as myConstClass from '../components/path'
 
-//import { Searchbar } from 'react-native-paper';
 
-
-// class THDautrang1 extends Component {
-
-//   state = {
-//     search: '',
-//   };
-//   updateSearch = (search) => {
-//     //console.log(search);
-//     this.setState({ search });
-//     Searching(a=search);
-//   };
-
-//    render() {
-//     const { search } = this.state;
-//      return (
-//        <>
-//           <SearchBar
-//           containerStyle={{backgroundColor: 'deepskyblue'}}
-//           inputContainerStyle={{backgroundColor: 'white'}}
-//           placeholder="Ban can tim gi?"
-//           onChangeText={this.updateSearch}
-//           value={search}
-//           />
-//        </>
-//      )
-//    }
-//   }
-
-    // function Trans(ao, an) {
-    //   return (
-    //      an = ao
-    //   );
-    // }
-    // const test = Trans('quần',test);
-    // console.log({test});
-    // const THDautrang = () => {
-    //   const [searchQuery, setSearchQuery] = React.useState('');
-    
-    //   const onChangeSearch = query => setSearchQuery(query);
-    //   //console.log(searchQuery)
-    //   return (
-    //     <Searchbar
-    //       placeholder="Search"
-    //       onChangeText={onChangeSearch}
-    //       value={searchQuery}
-    //     />
-    //   );
-    // };
 
 const Searching=({route})=>{
     const [isloaded, setDataLoaded] = useState(true);
     const [hoas, sethoaData] = useState(0);
     //const tenhang=route.params.Searching;
-
+    
     const tenhang = route;
     const getloaihoas = async () => {
         try {
@@ -76,10 +23,14 @@ const Searching=({route})=>{
             sethoaData(hoas)
             setDataLoaded(false)
             console.log('api/LayTenHang?tenhang='+tenhang);
+            //var r = 1
         } catch (error) {
           //console.error(error);
-          //Alert.alert('Not found', route)
-          textNotFound()
+          
+          //Alert.alert('Not found', route)    
+          //searching() 
+          //var r = 2;   
+            
         }
     };
     useEffect (() => {
@@ -113,18 +64,30 @@ function handleSelection (id){
 
 function renderItem({item, index}) {
     //console.log(item.tenhang);
-
   return (
     <TouchableOpacity
         onPress ={
           () => navigation.navigate('Detail1',
-          {mahoa: item.mahang, tenhang: item.tenhang, dongia: item.dongia, mota: item.mota, hinh: item.hinh})
+          {mahoa: item.mahang, 
+            tenhang: item.tenhang, 
+            dongia: item.dongia, 
+            mota: item.mota, 
+            hinh: item.hinh, 
+            hinh1: item.hinh1, 
+            hinh2: item.hinh2, 
+            hinh3: item.hinh3})
         }>
-            <View>
+            <View>           
                 <Loaihang ma={item.mahang} ten={item.tenhang} dongia={item.dongia} hinh={item.hinh} />
             </View>
         </TouchableOpacity>
   );
+}
+
+function renderItem1(){
+  return(
+    <Text>Không tìm thấy {tenhang} </Text>
+  )
 }
 
 function Loaihang({ma, ten, dongia, hinh}) {
@@ -142,9 +105,11 @@ function Loaihang({ma, ten, dongia, hinh}) {
 
 
 
-// function Duong() {
-//   return <Duongcach />;
-// }
+function searching() {
+  return (
+   console.log('1')
+  )
+}
 
 function Cuoitrang() {
   return (

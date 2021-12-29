@@ -1,8 +1,6 @@
 import {StyleSheet} from 'react-native';
 const final_style = StyleSheet.create({
-  container:{
-   flex: 1,
-  },
+
   header: {
     flex: 1,
     flexDirection: 'row',
@@ -163,6 +161,7 @@ const final_style = StyleSheet.create({
   container: {
     //marginTop: 30,
     padding: 2,
+    margin: 0
   },
   item: {
     backgroundColor: "#f5f520",

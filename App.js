@@ -39,6 +39,38 @@
  const Drawer = createDrawerNavigator();
  const HomeNav=createStackNavigator();
  
+ const NotificationFunction = () =>{
+   return(
+       <HomeNav.Navigator initialRouteName ="NotificationHome">
+       <HomeNav.Screen
+           name="NotificationHome"
+           component={Notify}
+           options={{
+             title: 'Notification', //Set Header Title
+             headerShown: false,
+             headerStyle: {
+               backgroundColor: 'deepskyblue', //Set Header color
+             },
+             headerTintColor: '#fff', //Set Header text color
+             headerTitleStyle: {
+               fontWeight: 'bold', //Set Header text style
+             },
+           }}
+         />
+     <HomeNav.Screen
+       name='Detail1'
+       component={Mh_detail1}
+       options={({route}) => ({
+         //headerShown: false,
+         title: route.params.tenloai,
+         headerTitleAlign:'center',
+         headerTintColor: '#fff', //Set Header text color
+       })}
+     />
+     </HomeNav.Navigator>
+   )
+ }
+ 
  const SearchingFunction = () =>{
    return(
        <HomeNav.Navigator initialRouteName ="SearchHome">
@@ -62,8 +94,12 @@
        component={Mh_detail1}
        options={({route}) => ({
          //headerShown: false,
-         title: route.params.tenloai,
+         title: '',
+         headerStyle: {
+           backgroundColor: 'deepskyblue', //Set Header color
+         },
          headerTitleAlign:'center',
+         headerTintColor: '#fff', //Set Header text color
        })}
      />
      </HomeNav.Navigator>
@@ -107,10 +143,10 @@
            name="Login"
            component={LoginUser}
            options={{
-             headerShown:false,
-             title: 'Login User', //Set Header Title
+             //headerShown:false,
+             title: '', //Set Header Title
              headerStyle: {
-               backgroundColor: '#f4511e', //Set Header color
+               backgroundColor: 'deepskyblue', //Set Header color
              },
              headerTintColor: '#fff', //Set Header text color
              headerTitleStyle: {
@@ -122,10 +158,10 @@
            name="Register"
            component={RegisterUser}
            options={{
-             headerShown:false,
-             title: 'Register User', //Set Header Title
+             //headerShown:false,
+             title: '', //Set Header Title
              headerStyle: {
-               backgroundColor: '#f4511e', //Set Header color
+               backgroundColor: 'deepskyblue', //Set Header color
              },
              headerTintColor: '#fff', //Set Header text color
              headerTitleStyle: {
@@ -240,9 +276,14 @@
                }}
              />
              <Tab.Screen name= "Notification" 
-               component={Notify}
+               component={NotificationFunction}
                options={{
                  tabBarLabel: 'notification',
+                 headerTitleAlign: 'center',
+                 headerTintColor: '#fff', //Set Header text color
+                 headerStyle: {
+                   backgroundColor: 'deepskyblue', //Set Header color
+                 },
                  tabBarIcon: ({ color, size}) => (
                    <IconAg name="notifications-outline" color={color} size={30} />
                  )
@@ -265,6 +306,7 @@
                  tabBarHideOnKeyboard: true,
                  headerShown: false,
                  title: '',
+                 headerTintColor: '#fff', //Set Header text color
                  tabBarLabel: 'User',
                  tabBarIcon: ({ color, size}) => (
                    <IconAg name="person-outline" color={color} size={30} />

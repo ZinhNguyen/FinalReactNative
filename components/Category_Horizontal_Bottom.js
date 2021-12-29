@@ -29,7 +29,7 @@ const Category_Horizontal_Bottom=()=>{
     },[]);
 
     const navigation = useNavigation();
-    console.log(loaihoas);
+    //console.log(loaihoas);
         return(
             <View>
               {isloaded ? <ActivityIndicator /> :

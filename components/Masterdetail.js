@@ -16,6 +16,7 @@ import Mh_Master from '../views/home'
 import Mh_detail1 from '../views/details'
 import Mh_Product from '../views/product'
 import Mh_ProductBrand from '../views/ProductBrand'
+import Mh_Notification from '../views/notification'
 
 
 const Tab= createBottomTabNavigator();
@@ -50,8 +51,12 @@ const Masterdetail = () => {
       component={Mh_detail1}
       options={({route}) => ({
         //headerShown: false,
-        title: route.params.tenloai,
+        title: '',
+        headerStyle: {
+          backgroundColor: 'deepskyblue', //Set Header color
+        },
         headerTitleAlign:'center',
+        headerTintColor: '#fff', //Set Header text color
       })}
     />
     <HomeNav.Screen
@@ -59,7 +64,11 @@ const Masterdetail = () => {
       component={Mh_Product}
       options={({route}) => ({
         title: route.params.tenloai,
+        headerStyle: {
+          backgroundColor: 'deepskyblue', //Set Header color
+        },
         headerTitleAlign:'center',
+        headerTintColor: '#fff', //Set Header text color
       })}
     />
     <HomeNav.Screen
@@ -67,9 +76,21 @@ const Masterdetail = () => {
       component={Mh_ProductBrand}
       options={({route}) => ({
         title: route.params.tennhan,
+        headerStyle: {
+          backgroundColor: 'deepskyblue', //Set Header color
+        },
         headerTitleAlign:'center',
+        headerTintColor: '#fff', //Set Header text color
       })}
     />
+    {/* <HomeNav.Screen
+      name='Notification'
+      component={Mh_Notification}
+      options={() => ({
+        title: 'Notification',
+        headerTitleAlign:'center',
+      })}
+    /> */}
   </HomeNav.Navigator>
 );
 };

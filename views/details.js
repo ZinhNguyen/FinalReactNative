@@ -1,11 +1,12 @@
 import {ThemeProvider} from '@react-navigation/native'
 import React from 'react'
-import { Text, View, Image, ScrollView} from 'react-native'
+import { Text, View, Image, ScrollView, Icon} from 'react-native'
 import {useNavigation} from '@react-navigation/core'
 import { Dimensions } from 'react-native';
 const win = Dimensions.get('window');
 import IconAg from 'react-native-vector-icons/Ionicons';
 import styles from '../components/Styles'
+import { ImageSlider} from "react-native-image-slider-banner";
 
 const Detail =({route})=>{
     // const username=route.params.username;
@@ -15,10 +16,25 @@ const Detail =({route})=>{
     const dongia=route.params.dongia;
     const mota=route.params.mota;
     const hinh=route.params.hinh;
+    const hinh1=route.params.hinh1;
+    const hinh2=route.params.hinh2;
+    const hinh3=route.params.hinh3;
     return(
         <ScrollView>
+            <ImageSlider 
+                data={[
+                    {img: hinh},
+                    {img: hinh1},
+                    {img: hinh2},
+                    {img: hinh3},
+
+                ]}
+                autoPlay={false}
+                onItemChanged={(item) => console.log("item", item)}
+                closeIconColor="#fff"
+            />
         <View style={{flexDirection:'column'}}>           
-            <Image style={{alignSelf: 'center' ,resizeMode: 'stretch', width: '100%', height: 400,}} source={{uri:hinh}}/>
+            {/* <Image style={{alignSelf: 'center' ,resizeMode: 'stretch', width: '100%', height: 400,}} source={{uri:hinh}}/> */}
             <Text style={{color: 'black', fontSize: 20, fontWeight: '600', padding: 10 }}>{tenhang}</Text>
             <Text style={{color: 'red', fontSize: 20, paddingLeft: 10, paddingBottom: 5 }}>{dongia} đ</Text>
             <Text style={{color: 'gray', fontSize: 15, fontWeight: 'normal', paddingLeft: 10, paddingBottom: 10 }}>15 giờ trước</Text>         

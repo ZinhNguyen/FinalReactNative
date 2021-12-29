@@ -58,7 +58,7 @@ function renderItem({item, index}) {
   return (
     <TouchableOpacity
         onPress ={
-            () => navigation.navigate('Product', {maloai: item.Maloai})
+            () => navigation.navigate('Product', {maloai: item.Maloai, tenloai: item.Tenloai})
         }>
             <View>
                 <Loaihang ma={item.Maloai} ten={item.Tenloai} hinh={item.Hinh} />

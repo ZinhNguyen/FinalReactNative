@@ -16,7 +16,7 @@ const Newproduct=({route})=>{
     //console.log(maloai)
     const getloaihoas = async () => {
         try {
-            let response = await fetch('http://'+myConstClass.ip+'/WebapiQLBanHoa/api/LayHangMoi');
+            let response = await fetch('http://'+myConstClass.ip+'/webapiqlbanhoa/api/LayHangMoi');
             let hoas = await response.json();
 
             sethoaData(hoas)
@@ -57,7 +57,14 @@ function renderItem({item, index}) {
     <TouchableOpacity
         onPress ={
           () => navigation.navigate('Detail1', 
-          {mahoa: item.mahang, tenhang: item.tenhang, dongia: item.dongia, mota: item.mota, hinh: item.hinh})
+          {mahoa: item.mahang, 
+            tenhang: item.tenhang, 
+            dongia: item.dongia, 
+            mota: item.mota, 
+            hinh: item.hinh, 
+            hinh1: item.hinh1, 
+            hinh2: item.hinh2, 
+            hinh3: item.hinh3})
         }>
             <View>
                 <Loaihang ma={item.mahang} ten={item.tenhang} dongia={item.dongia} hinh={item.hinh} />
