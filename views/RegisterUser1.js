@@ -43,31 +43,57 @@ const RegisterUser = ({ navigation }) => {
     }
 
     db.transaction(function (tx) {
-      
       tx.executeSql(
-        'INSERT INTO table_user (user_name, user_contact, user_address, user_password) VALUES (?,?,?,?)',
-        [userName, userContact, userAddress, userPassword],
+        'SELECT * FROM table_user where user_contact = ? or user_address = ?',
+        [userContact, userAddress],
         (tx, results) => {
-          console.log('Results', results.rowsAffected);
-          if (results.rowsAffected > 0) {
-            Alert.alert(
-              'Success',
-              'You are Registered Successfully',
-              [
-                {
-                  text: 'Ok',
-                  onPress: () => navigation.navigate('HomeScreen2',{
-                    userContact : userContact, 
-                    userName: userName,
-                    userAddress: userAddress
-                  }),
-                },
-              ],
-              { cancelable: false }
-            );
-          } else alert('Registration Failed');
-        }
-      );
+          var len = results.rows.length;
+          console.log('len', len);
+          
+          if (len > 0) {
+                Alert.alert(
+                  'Lỗi',
+                  'SDT / Mail đã được đăng ký! Bạn có muốn đăng nhập ?',
+                  [
+                    {
+                      text: "Cancel",
+                      onPress: () => console.log("Cancel Pressed"),
+                    },
+                    {
+                      text: 'Ok',                 
+                      onPress: () => navigation.navigate('Login'),
+                    },
+                  ]
+                );
+
+          } else {
+              tx.executeSql(
+                'INSERT INTO table_user (user_name, user_contact, user_address, user_password) VALUES (?,?,?,?)',
+                [userName, userContact, userAddress, userPassword],
+                (tx, results) => {
+                  console.log('Results', results.rowsAffected);
+                  if (results.rowsAffected > 0) {
+                    Alert.alert(
+                      'Success',
+                      'You are Registered Successfully',
+                      [
+                        {
+                          text: 'Ok',
+                          onPress: () => navigation.navigate('HomeScreen2',{
+                            userContact : userContact, 
+                            userName: userName,
+                            userAddress: userAddress
+                          }),
+                        },
+                      ],
+                      { cancelable: false }
+                    );
+                  } else alert('Registration Failed');
+                }
+              );
+          }
+          }
+      )
     });
   };
   const onPress = () => navigation.navigate('Login');

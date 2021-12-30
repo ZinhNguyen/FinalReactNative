@@ -15,7 +15,7 @@ const ProductBrand=({route})=>{
     console.log(manhan)
     const getloaihoas = async () => {
         try {
-            let response = await fetch('http://'+myConstClass.ip+'/webapiqlbanhoa/api/LayMaNhan?manhan='+manhan);
+            let response = await fetch('http://'+myConstClass.ip+'/api/LayMaNhan?manhan='+manhan);
             let hoas = await response.json();
 
             sethoaData(hoas)

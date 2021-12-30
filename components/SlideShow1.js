@@ -11,12 +11,12 @@ const SlideShow1 = () =>{
             <View> 
                 <ImageSlider 
                     data={[                   
-                      {img: "http://"+myConstClass.ip+"/WebapiQLBanHoa/images/style2.jpg"},                      
-                      {img: "http://"+myConstClass.ip+"/WebapiQLBanHoa/images/style3.jpg"},                      
-                      {img: "http://"+myConstClass.ip+"/WebapiQLBanHoa/images/style4.jpg"},                      
-                      {img: "http://"+myConstClass.ip+"/WebapiQLBanHoa/images/style5.jpg"},                      
-                      {img: "http://"+myConstClass.ip+"/WebapiQLBanHoa/images/style6.jpg"},                      
-                      {img: "http://"+myConstClass.ip+"/WebapiQLBanHoa/images/style7.jpg"},                                                                                     
+                      {img: 'http://'+myConstClass.ip+'/images/style2.jpg'},                      
+                      {img: 'http://'+myConstClass.ip+'/images/style3.jpg'},                      
+                      {img: 'http://'+myConstClass.ip+'/images/style4.jpg'},                      
+                      {img: 'http://'+myConstClass.ip+'/images/style5.jpg'},                      
+                      {img: 'http://'+myConstClass.ip+'/images/style6.jpg'},                      
+                      {img: 'http://'+myConstClass.ip+'/images/style7.jpg'},                                                                                     
                     ]}
                     autoPlay={false}
                     onItemChanged={(item) => console.log("item", item)}

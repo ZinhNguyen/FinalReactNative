@@ -14,7 +14,7 @@ const Category_Horizontal=()=>{
 
     const getLoaihoas = async () => {
       try {
-        let response = await fetch('http://'+myConstClass.ip+'/WebapiQLBanHoa/api/Laydanhmuc');
+        let response = await fetch('http://'+myConstClass.ip+'/api/Laydanhmuc');
         let loaihoa = await response.json();
 
         setLoaihoaData(loaihoa);

@@ -21,7 +21,7 @@ const HomeApps=()=>{
   //console.log(maloai)
   const getloaihoas = async () => {
       try {
-         // let response = await fetch('http://'+myConstClass.ip+'/webapiqlbanhoa/api/LayNhanHang');
+         // let response = await fetch('http://'+myConstClass.ip+'/api/LayNhanHang');
           //let hoas = await response.json();
 
           //sethoaData(hoas)

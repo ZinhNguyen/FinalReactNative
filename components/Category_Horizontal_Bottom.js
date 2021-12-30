@@ -14,7 +14,7 @@ const Category_Horizontal_Bottom=()=>{
 
     const getLoaihoas = async () => {
       try {
-        let response = await fetch('http://'+myConstClass.ip+'/WebapiQLBanHoa/api/LayNhanHang');
+        let response = await fetch('http://'+myConstClass.ip+'/api/LayNhanHang');
         let loaihoa = await response.json();
 
         setLoaihoaData(loaihoa);

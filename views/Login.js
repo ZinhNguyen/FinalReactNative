@@ -16,14 +16,16 @@ var db = openDatabase({ name: 'QLBanHang.db' });
 const ViewUser = ({navigation}) => {
     
   let [inputUserContact, setInputUserContact] = useState('');
+  let [inputUserMail, setInputUserMail] = useState('');
   let [inputUserPassword, setInputUserPassword] = useState('');
   let [userData, setUserData] = useState({});
 
   let Login = () => {
     console.log(inputUserContact);
+    console.log(inputUserMail);
     console.log(inputUserPassword);
     if (!inputUserContact) {
-      alert('Vui lòng nhập số điện thoại');
+      alert('Vui lòng nhập Mail hoặc SDT');
       return;
     }
     if (!inputUserPassword) {
@@ -33,8 +35,8 @@ const ViewUser = ({navigation}) => {
     setUserData({});
     db.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM table_user where user_contact = ? and user_password = ?',
-        [inputUserContact, inputUserPassword],
+        'SELECT * FROM table_user where (user_contact = ? or user_address = ?) and user_password = ?',
+        [inputUserContact, inputUserMail, inputUserPassword],
         (tx, results) => {
           var len = results.rows.length;
           console.log('len', len);
@@ -61,7 +63,7 @@ const ViewUser = ({navigation}) => {
                 );
 
           } else {
-            alert('Email/ Mật khẩu không đúng');
+            alert('SDT/ Email/ Mật khẩu không đúng');
           }
         }
       );
@@ -86,7 +88,10 @@ const ViewUser = ({navigation}) => {
                 <Mytextinput
                   placeholder="Nhập Email/ Số điện thoại"
                   onChangeText={
-                    (inputUserContact) => setInputUserContact(inputUserContact)
+                    (inputUserContact) => {
+                      setInputUserContact(inputUserContact)
+                      setInputUserMail(inputUserContact)
+                    }
                   }
                   style={{ padding: 10 }}
                 />

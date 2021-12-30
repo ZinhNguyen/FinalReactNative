@@ -271,35 +271,35 @@
                  title: '',
                  tabBarLabel: 'Home',
                  tabBarIcon: ({ color, size}) => (
-                   <IconAg name="home-outline" color={color} size={30} />
+                   <IconAg name="home-outline" color={color} size={25} />
                  )
                }}
              />
-             <Tab.Screen name= "Notification" 
+             <Tab.Screen name= "Searching" 
+               component={SearchingFunction}
+               options={{
+                 tabBarHideOnKeyboard: true,
+                 headerShown: false,
+                 tabBarLabel: 'Search',
+                 tabBarIcon: ({ color, size}) => (
+                   <IconAg name="search-outline" color={color} size={25} />
+                 )
+               }}
+             />
+              <Tab.Screen name= "Notification" 
                component={NotificationFunction}
                options={{
-                 tabBarLabel: 'notification',
+                 tabBarLabel: 'Notification',
                  headerTitleAlign: 'center',
                  headerTintColor: '#fff', //Set Header text color
                  headerStyle: {
                    backgroundColor: 'deepskyblue', //Set Header color
                  },
                  tabBarIcon: ({ color, size}) => (
-                   <IconAg name="notifications-outline" color={color} size={30} />
+                   <IconAg name="notifications-outline" color={color} size={25} />
                  )
                }}
              /> 
-             <Tab.Screen name= "Searching" 
-               component={SearchingFunction}
-               options={{
-                 tabBarHideOnKeyboard: true,
-                 headerShown: false,
-                 tabBarLabel: 'Searching',
-                 tabBarIcon: ({ color, size}) => (
-                   <IconAg name="search-outline" color={color} size={30} />
-                 )
-               }}
-             />
              <Tab.Screen name= "User" 
                component={AccountFunction}
                options={{
@@ -309,7 +309,7 @@
                  headerTintColor: '#fff', //Set Header text color
                  tabBarLabel: 'User',
                  tabBarIcon: ({ color, size}) => (
-                   <IconAg name="person-outline" color={color} size={30} />
+                   <IconAg name="person-outline" color={color} size={25} />
                  )
                }}
              /> 

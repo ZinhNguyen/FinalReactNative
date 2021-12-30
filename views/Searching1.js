@@ -16,7 +16,7 @@ import * as myConstClass from '../components/path'
 
   // const getloaihoas = async () => {
   //     try {
-  //         let response = await fetch('http://'+myConstClass.ip+'/webapiqlbanhoa/api/LayTenHang?tenhang=%'+ tenhang + '%');
+  //         let response = await fetch('http://'+myConstClass.ip+'/api/LayTenHang?tenhang=%'+ tenhang + '%');
   //         let hoas = await response.json();
 
   //         sethoaData(hoas)

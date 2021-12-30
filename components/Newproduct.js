@@ -16,7 +16,7 @@ const Newproduct=({route})=>{
     //console.log(maloai)
     const getloaihoas = async () => {
         try {
-            let response = await fetch('http://'+myConstClass.ip+'/webapiqlbanhoa/api/LayHangMoi');
+            let response = await fetch('http://'+myConstClass.ip+'/api/LayHangMoi');
             let hoas = await response.json();
 
             sethoaData(hoas)
