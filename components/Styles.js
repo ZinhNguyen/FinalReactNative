@@ -103,9 +103,9 @@ const final_style = StyleSheet.create({
   loginIcon:{
     width: 35,
     height: 35,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: 'gainsboro',
+    //borderRadius: 5,
+    //borderWidth: 1,
+    //borderColor: 'gainsboro',
     
   },
   loginIconContainer:{

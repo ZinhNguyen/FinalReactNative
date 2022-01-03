@@ -1,11 +1,11 @@
 import React, {Component, useState, useEffect} from 'react';
 import {Text, View, FlatList, TouchableOpacity, Image} from 'react-native';
-import styles from '../components/Styles';
+import styles from '../../components/Styles';
 // import {hoas} from './data/hoa.json';
 // import Duongcach from './duongcach';
 // import Dautrang from './dautrang';
 import { useNavigation } from '@react-navigation/core'
-import * as myConstClass from '../components/path'
+import * as myConstClass from '../../components/path'
 
 const Mh_Hoa=({route})=>{
 

@@ -1,10 +1,10 @@
 import React, {Component, useState, useEffect} from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Image} from "react-native";
 import { ListItem, SearchBar } from "react-native-elements";
-import styles from '../components/Styles';
+import styles from '../../components/Styles';
 //import filter from "lodash.filter";
 var filter = require('lodash.filter'); 
-import * as myConstClass from '../components/path'
+import * as myConstClass from '../../components/path'
 
 // const Searching=()=>{
 

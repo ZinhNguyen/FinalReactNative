@@ -1,35 +1,29 @@
 import React, { useState } from 'react';
-import { Text, View, Alert, SafeAreaView } from 'react-native';
-import Mytextinput from '../components/Mytextinput';
-import Mybutton from '../components/Mybutton';
+import { Text, View, SafeAreaView } from 'react-native';
+import Mytextinput from '../../components/Mytextinput';
+import Mybutton from '../../components/Mybutton';
 import { openDatabase } from 'react-native-sqlite-storage';
 
 var db = openDatabase({ name: 'QLBanHang.db' });
 
-const DeleteUser = ({ navigation }) => {
+const ViewUser = () => {
   let [inputUserId, setInputUserId] = useState('');
+  let [userData, setUserData] = useState({});
 
-  let deleteUser = () => {
+  let searchUser = () => {
+    console.log(inputUserId);
+    setUserData({});
     db.transaction((tx) => {
       tx.executeSql(
-        'DELETE FROM  table_user where user_id=?',
+        'SELECT * FROM table_user where user_id = ?',
         [inputUserId],
         (tx, results) => {
-          console.log('Results', results.rowsAffected);
-          if (results.rowsAffected > 0) {
-            Alert.alert(
-              'Success',
-              'User deleted successfully',
-              [
-                {
-                  text: 'Ok',
-                  onPress: () => navigation.navigate('HomeScreen'),
-                },
-              ],
-              { cancelable: false }
-            );
+          var len = results.rows.length;
+          console.log('len', len);
+          if (len > 0) {
+            setUserData(results.rows.item(0));
           } else {
-            alert('Please insert a valid User Id');
+            alert('No user found');
           }
         }
       );
@@ -47,7 +41,18 @@ const DeleteUser = ({ navigation }) => {
             }
             style={{ padding: 10 }}
           />
-          <Mybutton title="Delete User" customClick={deleteUser} />
+          <Mybutton title="Search User" customClick={searchUser} />
+          <View
+            style={{
+              marginLeft: 35,
+              marginRight: 35,
+              marginTop: 10
+            }}>
+            <Text>User Id: {userData.user_id}</Text>
+            <Text>User Name: {userData.user_name}</Text>
+            <Text>User Contact: {userData.user_contact}</Text>
+            <Text>User Address: {userData.user_address}</Text>
+          </View>
         </View>
         <Text
           style={{
@@ -70,4 +75,4 @@ const DeleteUser = ({ navigation }) => {
   );
 };
 
-export default DeleteUser;
+export default ViewUser;

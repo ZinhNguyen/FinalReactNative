@@ -11,7 +11,7 @@ import * as myConstClass from '../components/path'
 const DATA = [
   // {
   //   id: "1",
-  //   title: "Data Structures",
+  //   title: "",
   // },
 ];
   
@@ -24,12 +24,6 @@ const Item = ({ title }) => {
 };
   
 const renderItem = ({ item }) => <Item title={item.title} />;
-// function Cuoitrang  (text) {
-//   return (
-//     <Searching route={text} />
-//     );
-//   }
-
 
 class Search extends Component {
   constructor(props) {

@@ -45,22 +45,26 @@ const ViewUser = ({navigation}) => {
             let res = results.rows.item(0);
             console.log(res.user_address);
             setUserData(results.rows.item(0));
-
-                Alert.alert(
-                  'Success',
-                  'You are Login Successfully',
-                  [
-                    {
-                      text: 'Ok',                 
-                      onPress: () => navigation.navigate('HomeScreen2',{
-                        userContact : inputUserContact, 
-                        userName: res.user_name,
-                        userAddress: res.user_address
-                      }),
-                    },
-                  ],
-                  { cancelable: false }
-                );
+            navigation.navigate('HomeScreen2',{
+              userContact : inputUserContact, 
+              userName: res.user_name,
+              userAddress: res.user_address
+            })
+                // Alert.alert(
+                //   'Success',
+                //   'You are Login Successfully',
+                //   [
+                //     {
+                //       text: 'Ok',                 
+                //       onPress: () => navigation.navigate('HomeScreen2',{
+                //         userContact : inputUserContact, 
+                //         userName: res.user_name,
+                //         userAddress: res.user_address
+                //       }),
+                //     },
+                //   ],
+                //   { cancelable: false }
+                // );
 
           } else {
             alert('SDT/ Email/ Mật khẩu không đúng');

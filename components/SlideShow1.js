@@ -18,8 +18,8 @@ const SlideShow1 = () =>{
                       {img: 'http://'+myConstClass.ip+'/images/style6.jpg'},                      
                       {img: 'http://'+myConstClass.ip+'/images/style7.jpg'},                                                                                     
                     ]}
-                    autoPlay={false}
-                    onItemChanged={(item) => console.log("item", item)}
+                    autoPlay={true}
+                    //onItemChanged={(item) => console.log("item", item)}
                     //onClick={(item, index) => {alert('hello'+index)}}
                     onClick = {()=>navigation.navigate('Notification')}
                     closeIconColor="#fff"

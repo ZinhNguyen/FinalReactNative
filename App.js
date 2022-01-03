@@ -7,7 +7,7 @@
  */
 
  import React, { Component } from 'react'
- import {Text, View, StyleSheet, TextInput, Button, Animated, StatusBar} from 'react-native';
+ import {StatusBar} from 'react-native';
  import 'react-native-gesture-handler';
  import { SafeAreaView } from 'react-native-safe-area-context';
  import { NavigationContainer } from "@react-navigation/native";
@@ -15,22 +15,16 @@
  import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
  import IconAg from 'react-native-vector-icons/Ionicons';
  import { createDrawerNavigator } from '@react-navigation/drawer';
- import SlideShow from './components/SlideShow'
- import Flatlist_Ho from './components/Flatlist_horizontal'
  import Flatlist_ve from './components/Flatlist_vertical'
- import Mh_LoaiHoa from './views/mh_loaihoa'
- import Mh_Hoa from './views/mh_hoa'
- import Mh_Master from './views/home'
  import Mh_detail1 from './views/details'
- import Mh_Product from './views/product'
  import MasterDetail from './components/Masterdetail'
  import HomeScreen from './views/HomeScreen1';
  import HomeScreen2 from './views/HomeScreen2';
  import RegisterUser from './views/RegisterUser1';
- import UpdateUser from './views/UpdateUser';
+ import UpdateUser from './views/test/UpdateUser';
  import LoginUser from './views/Login'
- import ViewAllUser from './views/ViewAllUser1';
- import DeleteUser from './views/DeleteUser';
+ import ViewAllUser from './views/test/ViewAllUser1';
+ import DeleteUser from './views/test/DeleteUser';
  import Timkiem from './views/Searching2';
  import Notify from './views/notification'
  
@@ -42,33 +36,33 @@
  const NotificationFunction = () =>{
    return(
        <HomeNav.Navigator initialRouteName ="NotificationHome">
-       <HomeNav.Screen
-           name="NotificationHome"
-           component={Notify}
-           options={{
-             title: 'Notification', //Set Header Title
-             headerShown: false,
-             headerStyle: {
-               backgroundColor: 'deepskyblue', //Set Header color
-             },
-             headerTintColor: '#fff', //Set Header text color
-             headerTitleStyle: {
-               fontWeight: 'bold', //Set Header text style
-             },
-           }}
-         />
-     <HomeNav.Screen
-       name='Detail1'
-       component={Mh_detail1}
-       options={({route}) => ({
-         //headerShown: false,
-         title: route.params.tenloai,
-         headerTitleAlign:'center',
-         headerTintColor: '#fff', //Set Header text color
-       })}
-     />
-     </HomeNav.Navigator>
-   )
+          <HomeNav.Screen
+              name="NotificationHome"
+              component={Notify}
+              options={{
+                title: 'Notification', //Set Header Title
+                headerShown: false,
+                headerStyle: {
+                  backgroundColor: 'deepskyblue', //Set Header color
+                },
+                headerTintColor: '#fff', //Set Header text color
+                headerTitleStyle: {
+                  fontWeight: 'bold', //Set Header text style
+                },
+              }}
+            />
+          <HomeNav.Screen
+            name='Detail1'
+            component={Mh_detail1}
+            options={({route}) => ({
+              //headerShown: false,
+              title: route.params.tenloai,
+              headerTitleAlign:'center',
+              headerTintColor: '#fff', //Set Header text color
+            })}
+          />
+        </HomeNav.Navigator>
+    )
  }
  
  const SearchingFunction = () =>{

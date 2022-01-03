@@ -26,11 +26,9 @@ const Searching=({route})=>{
             //var r = 1
         } catch (error) {
           //console.error(error);
-          
           //Alert.alert('Not found', route)    
           //searching() 
-          //var r = 2;   
-            
+          //var r = 2;        
         }
     };
     useEffect (() => {
